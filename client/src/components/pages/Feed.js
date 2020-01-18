@@ -13,7 +13,8 @@ class Feed extends Component {
   render() {
     return (
       <>
-        <Card/>
+        this is a feed
+        <Card />
       </>
     );
   }

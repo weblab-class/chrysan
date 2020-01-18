@@ -48,4 +48,11 @@ router.all("*", (req, res) => {
   res.status(404).send({ msg: "API route not found" });
 });
 
+// get user name
+router.get("/user", (req, res) => {
+  User.findById(req.query.userid).then((user) => {
+    res.send(user)
+  })
+});
+
 module.exports = router;

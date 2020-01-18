@@ -1,19 +1,29 @@
 import React, { Component } from "react";
+import { get } from "../../utilities";
 
 class Profile extends Component {
     constructor(props) {
       super(props);
       // Initialize Default State
-      this.state = {};
+      this.state = {
+        user: ''
+      };
     }
   
     componentDidMount() {
-      // remember -- api calls go here!
+      get(`api/user`, {userId: this.props.userid}).then((user) => {
+        this.setState({user: user})
+      })
+      console.log("here")
+      console.log(this.state.user.name)
     }
 
     render() {
         return (
             <div>
+              <h1>
+                {this.state.user.name}
+              </h1>
                 This is the profile page
             </div>
         );
