@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Profile extends Component {
+class NavBar extends Component {
     constructor(props) {
       super(props);
       // Initialize Default State
@@ -14,9 +14,13 @@ class Profile extends Component {
     render() {
         return (
             <div>
-                This is the profile page
+                what is a navbar
+            <Link to="/" >
+            Skeleton
+            </Link>
             </div>
         );
-    }}
+    }
+}
 
-    export default Profile;
+    export default NavBar;
