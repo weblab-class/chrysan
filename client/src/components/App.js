@@ -3,6 +3,7 @@ import { Router } from "@reach/router";
 import Profile from "./pages/Profile.js";
 import NavBar from "./pages/NavBar.js";
 import Skeleton from "./pages/Skeleton.js";
+import Feed from "./pages/Feed.js";
 
 import "../utilities.css";
 
@@ -58,6 +59,7 @@ class App extends Component {
         </Router>
         <Profile />
         <NavBar />
+        <Feed/>
       </>
     );
   }
