@@ -13,7 +13,7 @@ import { socket } from "../client-socket.js";
 
 import { get, post } from "../utilities";
 
-const GOOGLE_CLIENT_ID = "510579889189-t2m19hbnj6ht508ith1u5bjgfnigsvfv.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "512988024984-fdj85n7vm82hqn2ohpl843pod762ju1v.apps.googleusercontent.com";
 
 class App extends Component {
   // makes props available in this component

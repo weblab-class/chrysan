@@ -11,11 +11,10 @@ class Profile extends Component {
     }
   
     componentDidMount() {
-      get(`api/user`, {userId: this.props.userid}).then((user) => {
+      get(`api/user`, {userId: this.props.userId}).then((user) => {
         this.setState({user: user})
       })
-      console.log("here")
-      console.log(this.state.user.name)
+      console.log(this.props.userId)
     }
 
     render() {
