@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "chrysan-1579284747809",
+  "private_key_id": "21ed37b49a5a52de4315ec22749aae6626dee98f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC50DX7psVJV83e\nmgs9aKjeLvrX+RGKGaTGw7xgEMQDb31hOaJf4sl2sZaCy2G8Za42ubvIah2gjDMA\nt7nRTtDTfMddd0iw3m0SiwKuSrgVnGyXgHDrqUyGKHrpTCvsrnK6Hw0DHUVHMSbr\nwXN8NHagFelxAKbTP7KRJzG0ufD9vHgXe6nR47LI+bc6NWV+90As+kNss30vyE6k\nbKUeg6zN39YovNsXbr4DZ9ApojdDu+JyQ71wBk1kHY4rDPcKBcDb+o0/+17HE1Je\nOpCuYACEVzhIJSvhrrsGvjhWxXzLE5nbjcwDtJomb1GUKLchrwX6gPOghdDxV89B\n+hG5Vey5AgMBAAECggEAFnYlJG3JQP+wdvV7oNl/OlaHA6cL1/wYF1/vbFRygXDP\ngPqA1qL5VBQNG/P+dVH8UIi8urIbMT5pZu+Oso7avwoBJpsGCj1lBX4Q3aVSIeim\nFt1TqSUuxzPrAbsvvx1qaHXa8pKt/nhiWlLpBS1pXpovfTXFNNmpGhNZFp34lA9o\n3T/y7KuqowQg0FSmQ2QXJNVYJZHJYDpqurZucRBxInT5okVCAKv5WWV5w8GFabGQ\n2kwkWA6sMuDTbAEAXrFFCfhHvv1qLmP0GMs0M//8GucIwMjLYxzQRDY7BbAQZTEe\nxUiBpzr+BZbtHJZ2cNwoaaKor2lk1d3+nk9ZfhUpAQKBgQDfZFZFc3eAsUOYRSfR\nQ/mK4mVU4jjDgdxfFUX0jSxWHpirK/tJ9Jxb219opRZYuZDOHL8gYm29iA8GFdrY\npaknoTqiqprTwFh53RkU9T2Bd8IIuET21ttwyhbaPSUJ/8IG7NyIYsJ0ZVQCZ5lS\nu0z/pNlwfgXwJTDOKB8Rit/bgQKBgQDU76TdiNsrGUtYOiZWLZXfuN64uYPAMsFW\n0pfr1wWojju74CdSuUTKZ9vWjKfx20kKh/oBgMM/pXo/tG8PG/tXiQ1uR12lOy/3\n6exyrT7Ehytw7EzwPZeiUv/BTo/9Y5T7dqDyl/MmLgn9kpK8Wz9eAE+E0BR5cMxG\nZY9srZiNOQKBgQDAc6SPOKafTBe7uvhOpIz7RYee1TWp2NqNX7pgsK6dksZb0Qwv\n7ng1+ov7jx3tWhCSQNm3gJSiT/EBgRqEwlM0PQZS1T+FZZPTiNLu50gRnaaf9IAV\nV4y9YpzFbx/VuWzionRrWwnDVPhHChFg4NO4+cAJ1cgv1xpwwMfjSQ0KAQKBgG7v\nFqYvqXcPq3gge16ES0ONzcLRK3mTN7Si7HD6ycDhsO8VPYdUbClC6H4jM0/GXYw2\nASKNUasz67eKqh1mB5C4Hx4n4fq2FiyDWyL3bO74OMKQ6Rh0Di6MLSApbMym97P2\nPq2ESjHG5H+NwBKPOzke0k6wFSqbgGDgglMtMX/JAoGAfN+hjF3Kn+B3psGX8u+8\nf7+fUsiQ+8+4th+QBm1+yj88v4JiVrUt+0BsQGth4pRG+oFTphW3f1G1ddgBib7j\n8rN9ONTzXiZ0dK4AKwTm4uvV/8dmR56/SIpTi77w9PeJ1aqiEy4OfliMShuJnkzs\nkj0NhAFxuhlSd8IfC4kwOY0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "chrysan-clothing-bucket@chrysan-1579284747809.iam.gserviceaccount.com",
+  "client_id": "100095463539496595354",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/chrysan-clothing-bucket%40chrysan-1579284747809.iam.gserviceaccount.com"
+}
