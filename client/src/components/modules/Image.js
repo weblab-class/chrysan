@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
+import Sample from "../../sample.png"
 
 /**
  * Story is a component that renders creator and content of a story
@@ -10,19 +11,23 @@ import { Link } from "@reach/router";
  * @param {string} creator_id
  * @param {string} content of the story
  */
-class ClothingInfo extends Component {
+class Image extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+        image: Sample
+    };
   }
 
   render() {
     return (
       <div>
-          ugly sweater
-          price: $10
+          <Link to="/product/">
+            <img src = {this.state.image} />
+          </Link>
       </div>
     );
   }
 }
 
-export default ClothingInfo;
+export default Image;

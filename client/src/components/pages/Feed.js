@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Card from "../modules/Card.js";
 
+import "./Feed.css";
+
 class Feed extends Component {
   constructor(props) {
     super(props);
@@ -12,10 +14,11 @@ class Feed extends Component {
 
   render() {
     return (
-      <>
-        this is a feed
+      <div className="Feed-container">
         <Card />
-      </>
+        <Card />
+        <Card />
+      </div>
     );
   }
 }

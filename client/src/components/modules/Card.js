@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { get } from "../../utilities";
+import ClothingInfo from "../modules/ClothingInfo.js";
+import Image from "../modules/Image.js";
+import Sample from "../../sample.png"
 
 import "./Card.css";
 
@@ -26,6 +29,8 @@ class Card extends Component {
     return (
       <div className="Card-container">
           a card!
+          <ClothingInfo />
+          <Image />
       </div>
     );
   }

@@ -4,6 +4,7 @@ import Profile from "./pages/Profile.js";
 import NavBar from "./modules/NavBar.js";
 import Chatbook from "./pages/Chatbook.js";
 import Feed from "./pages/Feed.js";
+import SingleProduct from "./pages/SingleProduct.js";
 import { socket } from "../client-socket.js";
 import { get, post } from "../utilities";
 
@@ -57,6 +58,7 @@ class App extends Component {
           <Feed path="/" />
           <Profile path="/profile/:userId" />
           <Chatbook path="/chat" />
+          <SingleProduct path="/product" />
         </Router>
       </div>
     );
