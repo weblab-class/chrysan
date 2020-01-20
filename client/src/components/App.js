@@ -4,14 +4,11 @@ import Profile from "./pages/Profile.js";
 import NavBar from "./modules/NavBar.js";
 import Chatbook from "./pages/Chatbook.js";
 import Feed from "./pages/Feed.js";
-import GoogleLogin, { GoogleLogout } from "react-google-login";
+import { socket } from "../client-socket.js";
+import { get, post } from "../utilities";
 
 import "../utilities.css";
 import "./App.css";
-
-import { socket } from "../client-socket.js";
-
-import { get, post } from "../utilities";
 
 const GOOGLE_CLIENT_ID = "512988024984-fdj85n7vm82hqn2ohpl843pod762ju1v.apps.googleusercontent.com";
 
@@ -39,6 +36,7 @@ class App extends Component {
     post("/api/login", { token: userToken }).then((user) => {
       this.setState({ userId: user._id });
       post("/api/initsocket", { socketid: socket.id });
+    console.log(this.state.userId)
     });
   };
 
@@ -57,24 +55,9 @@ class App extends Component {
         />
         <Router>
           <Feed path="/" />
-          <Profile path="/profile" />
+          <Profile path="/profile/:userId" />
           <Chatbook path="/chat" />
         </Router>
-        {this.props.userId ? (
-          <GoogleLogout
-            clientId={GOOGLE_CLIENT_ID}
-            buttonText="Logout"
-            onLogoutSuccess={this.props.handleLogout}
-            onFailure={(err) => console.log(err)}
-          />
-        ) : (
-          <GoogleLogin
-            clientId={GOOGLE_CLIENT_ID}
-            buttonText="Login"
-            onSuccess={this.props.handleLogin}
-            onFailure={(err) => console.log(err)}
-          />
-        )}
       </div>
     );
   }
