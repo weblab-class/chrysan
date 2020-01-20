@@ -1,3 +1,31 @@
-.ClothingInfo-container {
-    flex-grow: 1
+.Info-icon {
+    height: 50 px;
+    width: 50 px;
+    border-radius: 50%;
+}
+
+.Info-button {
+    height: 20 px;
+    width: 300 px;
+    border-radius: 28px;
+    background: var(--primary--dim);
+    margin: 2px;
+    color: var(--white);
+    padding: var(--m);
+}
+
+.Info-iconContainer {
+    display: flex;
+    justify-content: flex-end;
+    height: 50 px;
+}
+
+.Info-productName {
+    color: var(--primary);
+    font-size: 24px;
+    flex-grow: 1;
+}
+
+.Info-textContainer {
+    display: flex;
 }
