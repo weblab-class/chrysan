@@ -1,4 +1,10 @@
 .Feed-container {
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
+    padding: var(--m) var(--m);
+    margin: auto;
+}
+
+.Search-container {
+    text-align: right;
 }

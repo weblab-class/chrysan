@@ -27,10 +27,9 @@ class Card extends Component {
 
   render() {
     return (
-      <div className="Card-container">
-          a card!
-          <ClothingInfo />
-          <Image />
+      <div className="Card-container u-flex-alignCenter">
+          <Image className = "Card-image u-flex-alignCenter"/>
+          <ClothingInfo className = "Card-info"/>
       </div>
     );
   }

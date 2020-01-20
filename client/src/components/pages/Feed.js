@@ -14,10 +14,25 @@ class Feed extends Component {
 
   render() {
     return (
-      <div className="Feed-container">
-        <Card />
-        <Card />
-        <Card />
+      <div>
+        <div>
+          <input
+            type = "text"
+            // value = {this.state.inputText}
+            // onChange = {this.handleInputChange}
+          />
+          <span>
+            <button>
+              search
+            </button>
+          </span>
+        </div>
+        
+        <div className="Feed-container">
+          <Card />
+          <Card />
+          <Card />
+        </div>
       </div>
     );
   }

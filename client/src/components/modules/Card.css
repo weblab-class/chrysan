@@ -1,8 +1,20 @@
 .Card-container {
-    border: var(--darkgrey) 1px solid;
-    border-radius: var(--xs);
+    border-color: var(--primary);
     margin-top: var(--m);
+    align-items: center;
+    padding: var(--m);
   }
 
-  
-  
+.Card-container + .Card-container {
+    margin-left: var(--l);
+}
+
+.Card-image {
+    flex-grow: 1;
+    height: 500 px;
+    width: 500 px;
+}
+
+.Card-info {
+    text-align: center;
+}
