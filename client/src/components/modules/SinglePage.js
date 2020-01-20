@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { get } from "../../utilities";
-import Card from "../modules/Card.js";
+import Card from "./Card.js";
 
-class SingleProduct extends Component {
+class SinglePage extends Component {
     constructor(props) {
       super(props);
       // Initialize Default State
@@ -30,4 +30,4 @@ class SingleProduct extends Component {
         );
     }}
 
-    export default SingleProduct;
+    export default SinglePage;

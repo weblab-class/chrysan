@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "@reach/router";
 import Sample from "../../sample.png"
 
+import "./Image.css";
+
 /**
  * Story is a component that renders creator and content of a story
  *
