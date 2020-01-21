@@ -46,7 +46,7 @@ class Profile extends Component {
   
   render() {
     if (!this.state.user) {
-      return <div> Loading! </div>;
+      return <div> You must make an account! </div>;
     }
     let productsList = this.state.products.map((productObj) => (
       <div className = "Profile-cardContainer">

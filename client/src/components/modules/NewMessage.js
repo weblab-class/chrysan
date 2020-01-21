@@ -29,13 +29,13 @@ class NewMessage extends Component {
 
     sendMessage = (event) => {
         const body = { recipient: this.props.recipient, content: this.state.content };
-        console.log(body);
+        document.getElementById("input-text").value=null;
         post("/api/message", body);
     }
      
     render() {
         return(<div>
-            <input type="text" onChange={this.textChange}/>
+            <textarea rows="5" cols="60" id="input-text" onChange={this.textChange}/>
             <button onClick={this.sendMessage}>Submit</button>
         </div>
         );

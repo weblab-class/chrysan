@@ -70,6 +70,15 @@ class Chatbook extends Component {
 
   componentDidMount() {
     this.loadMessageHistory();
+    console.log("before socket)");
+    socket.on("message", (data) => {
+      this.setState((prevState) => {
+        activeChat : {
+          recipient: prevState.activeChat.recipient;
+          messages: prevState.activeChat.messages.concat(data);
+        }
+      })
+    });
   }
 
   render() {
