@@ -84,7 +84,8 @@ router.post("/message", auth.ensureLoggedIn, (req, res) => {
     },
     content: req.body.content,
   });
-  message.save().then((message) => console.log("Inserted"));
+  message.save();
+  socket.getIo().emit("message", message);
 });
 
 // anything else falls to this "not found" case
