@@ -35,6 +35,11 @@ router.get("/whoami", (req, res) => {
   res.send(req.user);
 });
 
+// get active users to load onto chat window
+router.get("/activeUsers", (req, res) => {
+  res.send({ activeUsers: socket.getAllConnectedUsers() });
+});
+
 router.post("/initsocket", (req, res) => {
   // do nothing if user not logged in
   if (req.user) socket.addUser(req.user, socket.getSocketFromSocketID(req.body.socketid));

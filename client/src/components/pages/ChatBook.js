@@ -49,11 +49,16 @@ class Chatbook extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      activeUsers : [],
       activeChat : {
         recipient : ALL_CHAT,
         messages : TEST_MESSAGES,
       }
     };
+  }
+
+  setActiveUser = (user) => {
+    console.log(`setting the active user to: ${user.name}`);
   }
 
   loadMessageHistory () {
@@ -68,8 +73,15 @@ class Chatbook extends Component {
     });
   }
 
+  loadActiveUsers () {
+    get("/api/activeUsers").then((data) => {
+      console.log(data);
+    })
+  }
+
   componentDidMount() {
     this.loadMessageHistory();
+    this.loadActiveUsers();
     console.log("before socket)");
     socket.on("message", (data) => {
       this.setState((prevstate) => ({
@@ -84,6 +96,11 @@ class Chatbook extends Component {
   render() {
     return (
       <div className="Chatbook-container">
+        <ChatList 
+          users={this.state.activeUsers} 
+          setActiveUser={this.setActiveUser} 
+          userId={this.props.userId} 
+          active={this.state.activeChat.recipient}/>
         <Chat data={this.state.activeChat}/>
       </ div>
     );
