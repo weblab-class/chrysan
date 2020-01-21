@@ -46,6 +46,7 @@ class NewPostInput extends Component {
     this.setState({
       product_name: "",
       price: "",
+      description: "",
     });
   };
 

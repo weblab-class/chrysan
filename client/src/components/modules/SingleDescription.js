@@ -30,12 +30,11 @@ class SingleDescription extends Component {
                 <div className = "Page-productName u-inlineBlock">
                     {this.props.product.product_name}
                 </div>
-                <div>
-                  sold by {this.props.product.seller.name}
-                  {this.props.product.description}
-                </div>
+                <div> sold by {this.props.product.seller.name} <div/>
+                <div> {this.props.product.description} </div>
             </div>
-      </div>
+        </div>
+        </div>
     );
   }
 }

@@ -5,6 +5,8 @@ import ButtonRent from "./ButtonRent.js";
 import { get } from "../../utilities";
 import SingleDescription from "../modules/SingleDescription.js";
 
+import "./SinglePage.css";
+
 /**
  * SinglePage displays detailed view of item being sold
  *
@@ -25,12 +27,6 @@ class SinglePage extends Component {
         products: []
       };
     }
-    
-    setProduct = () => {
-      // get("/api/singleproduct", { productId: this.props.productId }).then((productObjs) => {
-      //   productObjs.map((productObj) => {
-      //     this.setState({ product: product }));
-    }
 
     componentDidMount() {
       get("/api/products").then((productObjs) => {
@@ -39,7 +35,6 @@ class SinglePage extends Component {
           this.setState({ products: this.state.products.concat([productObj]) });
         });
       });
-      this.setProduct();
     }
 
     componentDidUpdate(oldProps) {
