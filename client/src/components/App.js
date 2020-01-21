@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
 import Profile from "./pages/Profile.js";
+import UploadProduct from "./pages/UploadProduct.js";
 import NavBar from "./modules/NavBar.js";
 import Chatbook from "./pages/Chatbook.js";
 import Feed from "./pages/Feed.js";
@@ -58,7 +59,8 @@ class App extends Component {
           <Feed path="/" />
           <Profile path="/profile/:userId" />
           <Chatbook path="/chat" />
-          <SinglePage path="/product" />
+          <SinglePage path="/product/:product_name" />
+          <UploadProduct path="/upload" />
         </Router>
       </div>
     );

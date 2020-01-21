@@ -1,0 +1,22 @@
+.Profile-container {
+    padding: var(--m) var(--m);
+    margin: auto;
+}
+
+.Profile-title {
+    font-size: var(--l);
+    font-weight: bold;
+    font-style: italic;
+    color: var(--primary--dim)
+}
+
+.Profile-uploadContainer {
+    color: var(--dark);
+}
+
+.Profile-cardContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--m) var(--m);
+    margin: auto;
+}

@@ -3,6 +3,7 @@
     margin-top: var(--m);
     align-items: center;
     padding: var(--m);
+    flex-grow: 1;
   }
 
 .Card-container + .Card-container {

@@ -1,0 +1,9 @@
+.ButtonBuy {
+    height: 20 px;
+    width: 300 px;
+    border-radius: 28px;
+    background: var(--primary--dim);
+    margin: 2px;
+    color: var(--white);
+    padding: var(--m);
+}

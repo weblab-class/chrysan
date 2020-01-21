@@ -1,0 +1,5 @@
+.SinglePage-container {
+    max-width: 960px;
+    padding: var(--l) var(--l);
+    margin: auto; 
+}

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-import Sample from "../../sample.png"
 
 import "./Image.css";
 
@@ -8,25 +7,32 @@ import "./Image.css";
  * Story is a component that renders creator and content of a story
  *
  * Proptypes
- * @param {string} _id of the story
- * @param {string} creator_name
- * @param {string} creator_id
- * @param {string} content of the story
+ * @param {string} product_name
+ * @param {image} image
  */
 class Image extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        image: Sample
     };
   }
+
 
   render() {
     return (
       <div>
-          <Link to="/product/">
-            <img src = {this.state.image} />
-          </Link>
+        <Link 
+          to= {`/product/${this.props.product_name}`}
+            // image= {this.props.image}
+            // product_name= {this.props.product_name}
+            // buy_price = {this.props.buy_price}
+            // rent_price = {this.props.rent_price}
+            // sell = {this.props.sell}
+            // rent = {this.props.rent}
+            // haggle = {this.state.haggle}
+            >
+          <img src = {this.props.image} />
+        </Link>
       </div>
     );
   }

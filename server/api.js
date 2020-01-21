@@ -11,6 +11,7 @@ const express = require("express");
 
 // import models so we can interact with the database
 const User = require("./models/user");
+const Product = require("./models/product");
 
 // import authentication library
 const auth = require("./auth");
@@ -49,6 +50,20 @@ router.get("/user", (req, res) => {
   })
 });
 
+// get all products
+router.get("/products", (req, res) => {
+  Product.find(req.query).then((products) => res.send(products))
+})
+
+// post product
+router.post("/product", (req, res) => {
+  const newProduct = new Product({
+    product_name: req.body.product_name,
+    price: req.body.price,
+  });
+  newProduct.save().then((product) => res.send(product))
+
+})
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);

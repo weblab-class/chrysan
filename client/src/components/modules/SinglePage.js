@@ -1,13 +1,24 @@
 import React, { Component } from "react";
-import { get } from "../../utilities";
-import Card from "./Card.js";
+import Sample from "../../sample.png"
+import ButtonBuy from "./ButtonBuy.js";
+import ButtonRent from "./ButtonRent.js";
+
+/**
+ * SinglePage displays detailed view of item being sold
+ *
+ * Proptypes
+ * @param {string} product_name
+ * @param {string} product_id
+ * @param {string} seller_name
+ * @param {string} seller_id
+ */
 
 class SinglePage extends Component {
     constructor(props) {
       super(props);
       // Initialize Default State
       this.state = {
-
+        image: Sample
       };
     }
   
@@ -17,15 +28,20 @@ class SinglePage extends Component {
   
     render() {
         return (
-            <div>
-              fuck this class
-              <img src = {this.props.image}/>
-              <button>
-                  buy
-              </button>
-              <button>
-                  rent
-              </button>
+            <div className = "SinglePage-container">
+              <img src = {this.state.image}/>
+              <div>
+                  {this.props.product_name}
+              </div>
+              <div>
+                {(this.props.sell) && 
+                <ButtonBuy 
+                    buy_price = {this.props.buy_price}/> }
+                {(this.props.rent) && 
+                <ButtonRent
+                    rent_price = {this.props.rent_price} /> }
+              </div>
+              
             </div>
         );
     }}
