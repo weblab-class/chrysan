@@ -10,7 +10,7 @@ import "./Card.css";
  * Card displays items being sold
  *
  * Proptypes
- * @param {string} _id of the card
+ * @param {string} _id of the product
  * @param {string} seller_name
  * @param {string} seller_id
  * @param {string} price of the product
@@ -22,7 +22,6 @@ class Card extends Component {
     this.state = {
       product_name: this.props.product_name,
       price: this.props.price,
-      // product_id: "123",
       // seller_name: "emily",
       // seller_id: "456",
       // buy_price: "10",

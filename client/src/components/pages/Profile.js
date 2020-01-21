@@ -30,6 +30,11 @@ class Profile extends Component {
       })
       this.setUser();
     }
+      addNewProduct = (productObj) => {
+        this.setState({
+          products: [productObj].concat(this.state.products),
+        });
+      };
 
     componentDidUpdate(oldProps) {
       // this is called whenever the props change (call API again if the userId changes)
@@ -37,12 +42,6 @@ class Profile extends Component {
         this.setUser();
       }
     }
-
-    addNewProduct = (productObj) => {
-      this.setState({
-        products: [productObj].concat(this.state.products),
-      });
-    };
   
   render() {
     if (!this.state.user) {
@@ -60,11 +59,14 @@ class Profile extends Component {
     return (
       <div className = "Profile-container">
         <div className = "u-textCenter">
-          <div className = "Profile-title" > my items</div>
+          <div className = "Profile-title" > hi my name is {this.state.user.name}! my items:</div>
           <div> upload items here: </div>
         </div>
         <div className = "Profile-uploadContainer u-flex-align-center">
-          <NewProduct addNewProduct={this.addNewProduct} className = "u-flex-align-center"/>
+          <NewProduct
+            addNewProduct={this.addNewProduct}
+            user= {this.state.user}
+            className = "u-flex-align-center"/>
           {productsList}
         </div>
       </div>  
