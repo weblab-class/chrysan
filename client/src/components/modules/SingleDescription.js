@@ -26,10 +26,13 @@ class SingleDescription extends Component {
           <ButtonBuy
             price = {this.props.product.price}
             /> 
-            <div className = "Info-textContainer" >
-                <div className = "Info-productName u-inlineBlock">
-                    {this.props.product.product_name}, sold by {this.props.product.seller.name}
-                    {this.props.product.description}
+            <div className = "Page-textContainer" >
+                <div className = "Page-productName u-inlineBlock">
+                    {this.props.product.product_name}
+                </div>
+                <div>
+                  sold by {this.props.product.seller.name}
+                  {this.props.product.description}
                 </div>
             </div>
       </div>

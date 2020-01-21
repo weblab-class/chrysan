@@ -3,8 +3,19 @@
     justify-content: space-between;
     padding: var(--m) var(--m);
     margin: auto;
+    flex-wrap: wrap;
 }
 
-.Search-container {
-    text-align: right;
+.Feed-searchContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: right;
+    padding: var(--m);
+}
+
+.Feed-title {
+    color: var(--primary--dim);
+    font-size: 72px;
+    font-style: italic;
+    font-weight: bold;
 }

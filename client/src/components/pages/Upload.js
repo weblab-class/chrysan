@@ -3,7 +3,7 @@ import { get } from "../../utilities";
 import Card from "../modules/Card.js";
 import { NewProduct } from "../modules/NewProductInput.js";
 
-import "./Profile.css";
+import "./Upload.css";
 
 class Upload extends Component {
     constructor(props) {
@@ -58,10 +58,11 @@ class Upload extends Component {
       </div>
     ))
     return (
-      <div className = "Profile-container">
-        <div className = "u-textCenter">
-          <div className = "Profile-title" > hi my name is {this.state.user.name}! my items:</div>
-          <div> upload items here: </div>
+      <div className = "Upload-container">
+        <div className = "Upload-titleContainer u-textCenter u-flex-align-center">
+          <div className = "Profile-title" > hi {this.state.user.name}! </div>
+          <div> upload new items here! </div>
+          <div> items will appear on your profile </div>
         </div>
         <div className = "Profile-uploadContainer u-flex-align-center">
           <NewProduct

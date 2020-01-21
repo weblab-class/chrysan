@@ -59,10 +59,15 @@ class Profile extends Component {
     ))
     return (
       <div className = "Profile-container">
-        <div className = "u-textCenter">
-          <div className = "Profile-title" > hi my name is {this.state.user.name}! my items:</div>
+        <div className = "Profile-titleContainer u-textCenter">
+          <div className = "Profile-title" > {this.state.user.name} </div>
+          <div className = "Profile-aboutContainer" >
+            <div>About Me</div>
+            <div>i have too much clothes but not enough</div>
+          </div>
         </div>
-        <div className = "Profile-uploadContainer u-flex-align-center">
+        <div> my items: </div>
+        <div className = "Profile-cardContainer u-flex-align-center">
           {productsList}
         </div>
       </div>  
