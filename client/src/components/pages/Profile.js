@@ -23,11 +23,12 @@ class Profile extends Component {
     componentDidMount() {
       // get(`/api/user`, { userid: this.props.userId }).then((user) => this.setState({ user: user }))
       document.title = "My Profile";
-      get("api/products").then((productObjs) => {
+      get("/api/products").then((productObjs) => {
         productObjs.map((productObj) => {
           this.setState({ products: this.state.products.concat([productObj]) })
         })
       })
+      
       this.setUser();
     }
       addNewProduct = (productObj) => {
@@ -50,7 +51,6 @@ class Profile extends Component {
     let productsList = this.state.products.map((productObj) => (
       <div className = "Profile-cardContainer">
         <Card 
-          key={`Card_${productObj._id}`}
           product_name= {productObj.product_name}
           price= {productObj.price}
         />
@@ -65,7 +65,7 @@ class Profile extends Component {
         <div className = "Profile-uploadContainer u-flex-align-center">
           <NewProduct
             addNewProduct={this.addNewProduct}
-            user= {this.state.user}
+            // user= {this.state.user}
             className = "u-flex-align-center"/>
           {productsList}
         </div>

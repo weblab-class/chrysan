@@ -24,8 +24,7 @@ class Feed extends Component {
   render() {
       let productsList = this.state.products.map((productObj) => (
         <div className = "Profile-cardContainer">
-        <Card 
-          key={`Card_${productObj._id}`}
+        <Card
           product_name= {productObj.product_name}
           price= {productObj.price}
         />
@@ -49,7 +48,7 @@ class Feed extends Component {
          
         </div>
         <div className="Feed-container">
-          <Card />
+          <Card product_name= "ugly sweater" price= "10"/>
           <Card />
           <Card />
         </div>

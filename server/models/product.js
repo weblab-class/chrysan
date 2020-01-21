@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const ProductSchema = new mongoose.Schema({
-  seller: {
-    _id: String,
-    name: String,
-  },
+  // seller: {
+  //   _id: String,
+  //   name: String,
+  // },
   product_name: String,
   price: String,
 });

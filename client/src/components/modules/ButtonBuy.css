@@ -6,4 +6,5 @@
     margin: 2px;
     color: var(--white);
     padding: var(--m);
+    align-self: right;
 }
