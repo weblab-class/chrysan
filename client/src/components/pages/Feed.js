@@ -27,6 +27,7 @@ class Feed extends Component {
         <Card
           product_name= {productObj.product_name}
           price= {productObj.price}
+          seller_name = {productObj.seller.name}
         />
       </div>
       ))
@@ -48,9 +49,7 @@ class Feed extends Component {
          
         </div>
         <div className="Feed-container">
-          <Card product_name= "ugly sweater" price= "10"/>
-          <Card />
-          <Card />
+          {productsList}
         </div>
       </div>
     );

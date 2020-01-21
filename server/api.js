@@ -57,13 +57,14 @@ router.get("/products", (req, res) => {
   Product.find({}).then((products) => res.send(products))
 })
 
+
 // post product
 router.post("/product", (req, res) => {
   const newProduct = new Product({
-    // seller: {
-    //   _id: req.user._id,
-    //   name: req.user.name,
-    // },
+    seller: {
+      _id: req.user._id,
+      name: req.user.name,
+    },
     product_name: req.body.product_name,
     price: req.body.price,
   });

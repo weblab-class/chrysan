@@ -49,6 +49,7 @@ class Card extends Component {
             className = "Card-info"
             product_name = {this.props.product_name}
             price = {this.props.price}
+            seller_name = {this.props.seller_name}
             // rent_price = {this.state.rent_price}
             // sell = {this.state.sell}
             // rent = {this.state.rent}

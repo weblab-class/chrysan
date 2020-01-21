@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 import ButtonBuy from "./ButtonBuy.js";
 import ButtonRent from "./ButtonRent.js";
 
-import "./CardInfo.css";
+import "./SingleDescription.css";
 import "../../utilities.css";
 
 
@@ -19,7 +19,7 @@ import "../../utilities.css";
  * @param {string} haggle
   
  */
-class CardInfo extends Component {
+class SingleDescription extends Component {
   constructor(props) {
     super(props);
     this.state = {}
