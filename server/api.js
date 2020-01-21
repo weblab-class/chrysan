@@ -21,7 +21,7 @@ const router = express.Router();
 //initialize socket
 const socket = require("./server-socket");
 
-//const Message = require("./models/message");
+const Message = require("./models/message");
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
@@ -51,51 +51,26 @@ router.get("/user", (req, res) => {
   })
 });
 
-router.post("/message", auth.ensureLoggedIn, (req, res) => {
-  console.log(req.body);
-  console.log(`The message is sent from: $${req.user.name}: ${req.body.content}`);
+router.get("/chat", (req, res) => {
+  const query = {"recipient._id": "ALL_CHAT"};
+  Message.find(query).then((messages) => res.send(messages));
 })
 
-// getting messages from server
-// router.get("/chat", (req, res) => {
-//   let query;
-//   if (req.query.recipient_id === "ALL_CHAT") {
-//     // get any message sent by anybody to ALL_CHAT
-//     query = { "recipient._id": "ALL_CHAT" };
-//   } else {
-//     // get messages that are from me->you OR you->me
-//     query = {
-//       $or: [
-//         { "sender._id": req.user._id, "recipient._id": req.query.recipient_id },
-//         { "sender._id": req.query.recipient_id, "recipient._id": req.user._id },
-//       ],
-//     };
-//   }
+router.post("/message", auth.ensureLoggedIn, (req, res) => {
+  console.log(`Received a chat message from ${req.user.name}: ${req.body.content}`);
+  console.log("hit");
 
-//   Message.find(query).then((messages) => res.send(messages));
-// });
-
-// router.post("/message", auth.ensureLoggedIn, (req, res) => {
-//   console.log(`Received a chat message from ${req.user.name}: ${req.body.content}`);
-
-//   // insert this message into the database
-//   const message = new Message({
-//     recipient: req.body.recipient,
-//     sender: {
-//       _id: req.user._id,
-//       name: req.user.name,
-//     },
-//     content: req.body.content,
-//   });
-//   message.save();
-
-//   if (req.body.recipient._id == "ALL_CHAT") {
-//     socket.getIo().emit("message", message);
-//   } else {
-//     socket.getSocketFromUserID(req.body.recipient._id).emit("message", message);
-//     socket.getSocketFromUserID(req.user._id).emit("message", message);
-//   }
-// });
+  // insert this message into the database
+  const message = new Message({
+    recipient: req.body.recipient,
+    sender: {
+      _id: req.user._id,
+      name: req.user.name,
+    },
+    content: req.body.content,
+  });
+  message.save().then((message) => console.log("Inserted"));
+});
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {

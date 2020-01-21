@@ -27,14 +27,6 @@ const TEST_MESSAGES = [
     },
     content: "css is confusing",
   },
-
-  {
-    sender: {
-      _id: 2,
-      name: "michelle",
-    },
-    content: "i love pens",
-  },
 ]
 
 class Chatbook extends Component {
@@ -64,8 +56,20 @@ class Chatbook extends Component {
     };
   }
 
-  componentDidMount() {
+  loadMessageHistory () {
+    get("/api/chat", { recipient_id: this.state.activeChat.recipient._id }).then((newMessages) => {
+      //console.log(newMessages);
+      this.setState({
+        activeChat : {
+          recipient: this.state.activeChat.recipient,
+          messages: newMessages,
+        },
+      })
+    });
+  }
 
+  componentDidMount() {
+    this.loadMessageHistory();
   }
 
   render() {
