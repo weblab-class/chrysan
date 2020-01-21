@@ -27,7 +27,7 @@ class NavBar extends Component {
                     <Link to='/' className = "NavBar-link">
                         Feed
                     </Link>
-                    <Link to='/profile/:userId' className = "NavBar-link">
+                    <Link to={`/profile/${this.props.userId}`} className = "NavBar-link">
                         Profile
                     </Link>
                     <Link to='/chat' className = "NavBar-link">

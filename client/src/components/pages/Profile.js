@@ -10,18 +10,31 @@ class Profile extends Component {
         user: undefined,
       };
     }
+
+    setUser = () => {
+      console.log(this.props.userId);
+      get(`/api/user`, { userId: this.props.userId }).then((user) => this.setState({ user: user }));
+    }
   
     componentDidMount() {
-      console.log(this.props.userId)
-      get(`/api/user`, { userid: this.props.userId }).then((user) => this.setState({ user: user }))
-      console.log(this.state.user)
+      this.setUser();
+    }
+
+    componentDidUpdate(oldProps) {
+      // this is called whenever the props change (call API again if the userId changes)
+      if (oldProps.userId !== this.props.userId) {
+        this.setUser();
+      }
     }
 
   
     render() {
+      if (!this.state.user) {
+        return <div> Loading! </div>;
+      }
         return (
             <div>
-              <h1> {this.state.user} </h1>
+              <h1> {this.state.user.name} </h1>
                 This is the profile page
               <Card />
               <Card />

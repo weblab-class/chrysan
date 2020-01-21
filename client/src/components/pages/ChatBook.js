@@ -37,11 +37,6 @@ const TEST_MESSAGES = [
   },
 ]
 
-const TEST_DATA = {
-  recipient : "grace",
-  messages : TEST_MESSAGES,
-}
-
 class Chatbook extends Component {
   /**
    * @typedef UserObject
@@ -61,16 +56,22 @@ class Chatbook extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      activeChat : {
+        recipient : ALL_CHAT,
+        messages : TEST_MESSAGES,
+      }
+    };
   }
 
   componentDidMount() {
+
   }
 
   render() {
     return (
       <div className="Chatbook-container">
-        <Chat data={TEST_DATA}/>
+        <Chat data={this.state.activeChat}/>
       </ div>
     );
   }

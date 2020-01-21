@@ -21,6 +21,8 @@ const router = express.Router();
 //initialize socket
 const socket = require("./server-socket");
 
+//const Message = require("./models/message");
+
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
 router.get("/whoami", (req, res) => {
@@ -44,10 +46,56 @@ router.post("/initsocket", (req, res) => {
 
 // get user name
 router.get("/user", (req, res) => {
-  User.findById(req.query.userid).then((user) => {
+  User.findById(req.query.userId).then((user) => {
     res.send(user);
   })
 });
+
+router.post("/message", auth.ensureLoggedIn, (req, res) => {
+  console.log(req.body);
+  console.log(`The message is sent from: $${req.user.name}: ${req.body.content}`);
+})
+
+// getting messages from server
+// router.get("/chat", (req, res) => {
+//   let query;
+//   if (req.query.recipient_id === "ALL_CHAT") {
+//     // get any message sent by anybody to ALL_CHAT
+//     query = { "recipient._id": "ALL_CHAT" };
+//   } else {
+//     // get messages that are from me->you OR you->me
+//     query = {
+//       $or: [
+//         { "sender._id": req.user._id, "recipient._id": req.query.recipient_id },
+//         { "sender._id": req.query.recipient_id, "recipient._id": req.user._id },
+//       ],
+//     };
+//   }
+
+//   Message.find(query).then((messages) => res.send(messages));
+// });
+
+// router.post("/message", auth.ensureLoggedIn, (req, res) => {
+//   console.log(`Received a chat message from ${req.user.name}: ${req.body.content}`);
+
+//   // insert this message into the database
+//   const message = new Message({
+//     recipient: req.body.recipient,
+//     sender: {
+//       _id: req.user._id,
+//       name: req.user.name,
+//     },
+//     content: req.body.content,
+//   });
+//   message.save();
+
+//   if (req.body.recipient._id == "ALL_CHAT") {
+//     socket.getIo().emit("message", message);
+//   } else {
+//     socket.getSocketFromUserID(req.body.recipient._id).emit("message", message);
+//     socket.getSocketFromUserID(req.user._id).emit("message", message);
+//   }
+// });
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
