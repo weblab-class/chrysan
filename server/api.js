@@ -22,6 +22,8 @@ const router = express.Router();
 //initialize socket
 const socket = require("./server-socket");
 
+const Message = require("./models/message");
+
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
 router.get("/whoami", (req, res) => {
@@ -45,7 +47,7 @@ router.post("/initsocket", (req, res) => {
 
 // get user name
 router.get("/user", (req, res) => {
-  User.findById(req.query.userid).then((user) => {
+  User.findById(req.query.userId).then((user) => {
     res.send(user);
   })
 });
@@ -64,6 +66,27 @@ router.post("/product", (req, res) => {
   newProduct.save().then((product) => res.send(product))
 
 })
+router.get("/chat", (req, res) => {
+  const query = {"recipient._id": "ALL_CHAT"};
+  Message.find(query).then((messages) => res.send(messages));
+})
+
+router.post("/message", auth.ensureLoggedIn, (req, res) => {
+  console.log(`Received a chat message from ${req.user.name}: ${req.body.content}`);
+  console.log("hit");
+
+  // insert this message into the database
+  const message = new Message({
+    recipient: req.body.recipient,
+    sender: {
+      _id: req.user._id,
+      name: req.user.name,
+    },
+    content: req.body.content,
+  });
+  message.save().then((message) => console.log("Inserted"));
+});
+
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);

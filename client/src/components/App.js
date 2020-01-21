@@ -38,7 +38,6 @@ class App extends Component {
     post("/api/login", { token: userToken }).then((user) => {
       this.setState({ userId: user._id });
       post("/api/initsocket", { socketid: socket.id });
-    console.log(this.state.userId)
     });
   };
 
@@ -57,7 +56,7 @@ class App extends Component {
         />
         <Router>
           <Feed path="/" />
-          <Profile path="/profile/:userId" />
+          <Profile path="/profile/:userId"/>
           <Chatbook path="/chat" />
           <SinglePage path="/product/:product_name" />
           <UploadProduct path="/upload" />

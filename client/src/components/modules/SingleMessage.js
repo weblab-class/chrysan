@@ -16,7 +16,6 @@ class SingleMessage extends Component {
     }
   
     render() {
-        console.log("hit")
       return (
         <div >
           <span>{this.props.message.sender.name + ":"}</span>

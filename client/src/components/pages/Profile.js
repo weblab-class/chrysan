@@ -14,6 +14,11 @@ class Profile extends Component {
         products: []
       };
     }
+
+    setUser = () => {
+      console.log(this.props.userId);
+      get(`/api/user`, { userId: this.props.userId }).then((user) => this.setState({ user: user }));
+    }
   
     componentDidMount() {
       // get(`/api/user`, { userid: this.props.userId }).then((user) => this.setState({ user: user }))
@@ -23,6 +28,14 @@ class Profile extends Component {
           this.setState({ products: this.state.products.concat([productObj]) })
         })
       })
+      this.setUser();
+    }
+
+    componentDidUpdate(oldProps) {
+      // this is called whenever the props change (call API again if the userId changes)
+      if (oldProps.userId !== this.props.userId) {
+        this.setUser();
+      }
     }
 
     addNewProduct = (productObj) => {
@@ -32,6 +45,9 @@ class Profile extends Component {
     };
   
   render() {
+    if (!this.state.user) {
+      return <div> Loading! </div>;
+    }
     let productsList = this.state.products.map((productObj) => (
       <div className = "Profile-cardContainer">
         <Card 
