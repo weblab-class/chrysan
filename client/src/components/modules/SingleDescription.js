@@ -11,12 +11,7 @@ import "../../utilities.css";
  * Story is a component that renders creator and content of a story
  *
  * Proptypes
- * @param {string} product_name
- * @param {string} buy_price
- * @param {string} rent_price
- * @param {string} sell
- * @param {string} rent
- * @param {string} haggle
+ * @param {ProductObject} product
   
  */
 class SingleDescription extends Component {
@@ -29,19 +24,12 @@ class SingleDescription extends Component {
     return (
         <div>
           <ButtonBuy
-            price = {this.props.price}
+            price = {this.props.product.price}
             /> 
-            {/* <div className = "Info-iconContainer" >
-                {(this.props.sell) && 
-                <ButtonBuy 
-                  buy_price = {this.props.buy_price}/> }
-                {(this.props.rent) && 
-                <ButtonRent
-                  rent_price = {this.props.rent_price} /> }
-            </div> */}
             <div className = "Info-textContainer" >
                 <div className = "Info-productName u-inlineBlock">
-                    {this.props.product_name}, sold by {this.props.seller_name}
+                    {this.props.product.product_name}, sold by {this.props.product.seller.name}
+                    {this.props.product.description}
                 </div>
             </div>
       </div>
@@ -49,4 +37,4 @@ class SingleDescription extends Component {
   }
 }
 
-export default CardInfo;
+export default SingleDescription;

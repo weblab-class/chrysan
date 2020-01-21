@@ -18,7 +18,6 @@ class Feed extends Component {
         this.setState({ products: this.state.products.concat([productObj]) });
       });
     });
-    console.log(this.state.products)
 }
 
   render() {
@@ -28,6 +27,7 @@ class Feed extends Component {
           product_name= {productObj.product_name}
           price= {productObj.price}
           seller_name = {productObj.seller.name}
+          productId = {productObj._id}
         />
       </div>
       ))

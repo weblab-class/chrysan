@@ -33,6 +33,9 @@ class NavBar extends Component {
                     <Link to='/chat' className = "NavBar-link">
                         Chatbook
                     </Link>
+                    <Link to='/upload' className = "NavBar-link">
+                        Upload
+                    </Link>
                 </span>
                 {this.props.userId ? (
                     <GoogleLogout

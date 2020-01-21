@@ -12,11 +12,8 @@ import "../../utilities.css";
  *
  * Proptypes
  * @param {string} product_name
- * @param {string} buy_price
- * @param {string} rent_price
- * @param {string} sell
- * @param {string} rent
- * @param {string} haggle
+ * @param {string} productId
+ * @param {string} seller_name
   
  */
 class CardInfo extends Component {
