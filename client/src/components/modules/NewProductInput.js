@@ -91,6 +91,10 @@ class NewPostInput extends Component {
 
   addProduct = (product_name, price) => {
     const body = { 
+      seller: {
+        _id: this.props.user._id,
+        name: this.props.user.name,
+      },
       product_name: product_name,
       price: price
     };

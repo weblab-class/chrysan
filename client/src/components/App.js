@@ -56,7 +56,8 @@ class App extends Component {
         />
         <Router>
           <Feed path="/" />
-          <Profile path="/profile/:userId"/>
+          <Profile path="/profile/:userId"
+            userId= {this.state.userId}/>
           <Chatbook path="/chat" />
           <SinglePage path="/product/:product_name" />
           <UploadProduct path="/upload" />
