@@ -3,9 +3,9 @@ import { get } from "../../utilities";
 import Card from "../modules/Card.js";
 import { NewProduct } from "../modules/NewProductInput.js";
 
-import "./Profile.css";
+import "./Upload.css";
 
-class Profile extends Component {
+class Upload extends Component {
     constructor(props) {
       super(props);
       // Initialize Default State
@@ -58,20 +58,20 @@ class Profile extends Component {
       </div>
     ))
     return (
-      <div className = "Profile-container">
-        <div className = "Profile-titleContainer u-textCenter">
-          <div className = "Profile-title" > {this.state.user.name} </div>
-          <div className = "Profile-aboutContainer" >
-            <div>About Me</div>
-            <div>i have too much clothes but not enough</div>
-          </div>
+      <div className = "Upload-container">
+        <div className = "Upload-titleContainer u-textCenter u-flex-align-center">
+          <div className = "Profile-title" > hi {this.state.user.name}! </div>
+          <div> upload new items here! </div>
+          <div> items will appear on your profile </div>
         </div>
-        <div> my items: </div>
-        <div className = "Profile-cardContainer u-flex-align-center">
-          {productsList}
+        <div className = "Profile-uploadContainer u-flex-align-center">
+          <NewProduct
+            addNewProduct={this.addNewProduct}
+            user= {this.state.user}
+            className = "u-flex-align-center"/>
         </div>
       </div>  
     )
   }}
 
-export default Profile;
+export default Upload;

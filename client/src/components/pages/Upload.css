@@ -1,4 +1,4 @@
-.Profile-container {
+.Upload-container {
     padding: var(--m) var(--m);
     margin: auto;
     display: flex;
@@ -7,9 +7,11 @@
     flex-direction: column;
 }
 
-.Profile-titleContainer {
+.Upload-titleContainer {
     display: flex;
     flex-grow: 1;
+    padding: var(--m);
+    flex-direction: column;
 }
 
 .Profile-title {
@@ -28,6 +30,7 @@
 
 .Profile-uploadContainer {
     color: var(--dark);
+    flex-grow: 1;
 }
 
 .Profile-cardContainer {

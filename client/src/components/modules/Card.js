@@ -11,6 +11,7 @@ import "./Card.css";
  *
  * Proptypes
  * @param {string} product_name
+ * @param {string} productId
  * @param {string} price
  */
 
@@ -39,10 +40,7 @@ class Card extends Component {
           <Image
             className = "Card-image u-flex-alignCenter"
             product_name = {this.props.product_name}
-            // buy_price = {this.state.buy_price}
-            // rent_price = {this.state.rent_price}
-            // sell = {this.state.sell}
-            // rent = {this.state.rent}
+            productId = {this.props.productId}
             image = {this.state.image}
             />
           <CardInfo 
@@ -50,6 +48,7 @@ class Card extends Component {
             product_name = {this.props.product_name}
             price = {this.props.price}
             seller_name = {this.props.seller_name}
+            productId = {this.props.productId}
             // rent_price = {this.state.rent_price}
             // sell = {this.state.sell}
             // rent = {this.state.rent}

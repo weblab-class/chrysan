@@ -8,6 +8,7 @@ import "./Image.css";
  *
  * Proptypes
  * @param {string} product_name
+ * @param {string} _id
  * @param {image} image
  */
 class Image extends Component {
@@ -17,12 +18,15 @@ class Image extends Component {
     };
   }
 
+  componentDidMount() {
+    console.log(this.props.productId)
+  }
 
   render() {
     return (
       <div>
         <Link 
-          to= {`/product/${this.props.product_name}`}
+          to= {`/product/${this.props.productId}`}
             // image= {this.props.image}
             // product_name= {this.props.product_name}
             // buy_price = {this.props.buy_price}

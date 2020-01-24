@@ -24,4 +24,5 @@
 
 .NavBar-link.NavBar-login {
     opacity: 1;
+    margin-left: var(--m);
   }

@@ -62,6 +62,11 @@ router.get("/products", (req, res) => {
   Product.find({}).then((products) => res.send(products))
 })
 
+// get single product
+router.get("/singleproduct", (req, res) => {
+  Product.findById(req.query.productId).then((product) => res.send(product))
+})
+
 
 // post product
 router.post("/product", (req, res) => {
@@ -72,6 +77,7 @@ router.post("/product", (req, res) => {
     },
     product_name: req.body.product_name,
     price: req.body.price,
+    description: req.body.description,
   });
   newProduct.save().then((product) => res.send(product))
 

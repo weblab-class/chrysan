@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
 import Profile from "./pages/Profile.js";
-import UploadProduct from "./pages/UploadProduct.js";
+import Upload from "./pages/Upload.js";
 import NavBar from "./modules/NavBar.js";
-import Chatbook from "./pages/Chatbook.js";
+import Chatbook from "./pages/ChatBook.js";
 import Feed from "./pages/Feed.js";
 import SinglePage from "./modules/SinglePage.js";
 import { socket } from "../client-socket.js";
@@ -59,8 +59,9 @@ class App extends Component {
           <Profile path="/profile/:userId"
             userId= {this.state.userId}/>
           <Chatbook path="/chat" />
-          <SinglePage path="/product/:product_name" />
-          <UploadProduct path="/upload" />
+          <SinglePage path="/product/:productId" />
+          <Upload path="/upload" 
+            userId= {this.state.userId}/>
         </Router>
       </div>
     );

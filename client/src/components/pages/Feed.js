@@ -13,12 +13,12 @@ class Feed extends Component {
   }
 
   componentDidMount() {
+    document.title = "Home";
     get("/api/products").then((productObjs) => {
       productObjs.map((productObj) => {
         this.setState({ products: this.state.products.concat([productObj]) });
       });
     });
-    console.log(this.state.products)
 }
 
   render() {
@@ -28,12 +28,14 @@ class Feed extends Component {
           product_name= {productObj.product_name}
           price= {productObj.price}
           seller_name = {productObj.seller.name}
+          productId = {productObj._id}
         />
       </div>
       ))
     return (
       <div>
-        <div>
+        <div className = "Feed-searchContainer">
+          {/* search bar that is currently not functional */}
           <input
             type = "text"
             // value = {this.state.inputText}
@@ -45,8 +47,9 @@ class Feed extends Component {
             </button>
           </span>
         </div>
-        <div>
-         
+        <div className = "u-textCenter">
+          <div className = "Feed-title">CHRYSAN</div>
+          <div>browse all items here!</div>
         </div>
         <div className="Feed-container">
           {productsList}
