@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "chrysan-1579284747809",
+  "private_key_id": "76a4a9873c6b5dd9d6ef42a0c44f9ccb52e5e3fb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDG5PJ+6DNH5Ia7\nxWs5olpQUKvT+NiPqMUVl+DWCJmCK+OehSGPoZZE5yD0Pa8QLy+dwpDgeqB9BQhL\n5QbyqRcMK4B70VXiLukv5aRfyQW5w8mZCpt6CJMK33+TPM83Y6YjuXm7J8BsmltW\n3ZcirQ/dltqj3PUjMnwFs2l2Um/aKGwWiiaU43nKMmbYzBPlJUUFSQogZTfBPdw3\nBCfCM6aRHcEBzwr7S1dOQkHgBFUSta5Q2Wp+Z72wNHw3tzDXdSXjx9X5AoV6IpQ5\ngnkyIOrxG6Mh9tPo7uNtuird/L0pvCq7zWhC1fYz8mKy+lnP8PY1+RvLD7YwNhRa\nxt1EBlz1AgMBAAECggEALD60Hz0iY0TYIB9Luhd+xc0cXFxIOLUPmr0dnB9vnsCK\nszHkhGIq3osYDp1GO3BzxEGLHxTIbOdYsCFzyTmKUf+/ZkvsMhPDdg884L4EUw3V\n5ACzE5OiulF7vNJTOnwlcl8JUHQIX2B7HzjOLT2YgO/VFYzKz5ikdFQ0CslN7paY\ntV42ltI9qDa3DQWLGxAgPh4u2xbHATJOiwfkcAR2NOuP9KC3EjtObSKWGaD0HQhD\nVm4pPbXWIS1zAUCB9gK1lJ/s1KNMUt1BUGbXUroKycs1L8xfxKCkj0D2CcDqSfIv\niyLPXOi3ltG+THmJn8ayVl5H6nA0nWXKXSTnlWNMAQKBgQD0e2Ja8K0DQWnPAOpW\n9TEEkLniTTeQVAoyGy4Qo/MIb3fF4A39QKnjFw21N1z+mDosEHbQ+6waNTizVYV1\nOzHdRrjGBfGW+Oy1zzx6+QlDFvdWPvosMqVjVBlv6PDHwYY94yWWqyxUcUZPiY45\nkh7s7y4jGUAJhiN8y3WbHcc1AQKBgQDQQ77g0U78OXF1TvE9p8fNpaFq/DiphECB\nS2W4BHoRhpoc6bo+7oMrefdeNcvHPu57X6HfT9yZwI/KYaHUOD/rXd7w9vHMoS0V\n/zpbHtElLVs6EBHkZc4ASUrybsUfcmwEdUwzuElqI9uxs+ZEowcd2un5/7h6OQ1z\nh2SzmKGj9QKBgQC4s56S5dFP7FNruF1SZNsrf8tvVLbtqxAo2q/qknJBpTTvoV3w\nPrIahogsqC7xiUApmiapq/lRs3OqyKmS7620ZoGh2Uuzq0vp7y7aGNsOfINP/TQz\nv++DIz40dd+yilpI1xrGwXs0MH/WBy4UAHist+Y7ThA7IcQdu/iVv+GIAQKBgQDL\nf3ayrDK2h9aSHnngmeHE0rPAGwWutfhlneudfFpeZ5yM5eDDf0ESKVIJbx1X6ekT\nCiXcU2eloJ+fy/hZqkDi1c1yvIkWPuMUHFjEEn+gCQqb2HnzJ3q7kuI1swDQMnjT\nfl3gJ5Essi8IG1XD+VyJ0o9PZYy3eKnpGgHO7zP6RQKBgEO/eqQtnzWlH5dC4lK6\nNpH8q9QSf4jR57qo60xRYOLdOXYn3hI5PD9QwbfmOEEOn9b9v1fkC26C0XiKMCEP\nex/j9LKx9wAmkdLssmH3licrQ/uQOpJeoaCVByoV5jnaeEB3CF6YA1fJLJZ3VRpr\nIoG9nebOGTkuUGSS1yxyfysE\n-----END PRIVATE KEY-----\n",
+  "client_email": "chrysan-bucket@chrysan-1579284747809.iam.gserviceaccount.com",
+  "client_id": "107404221515814822476",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/chrysan-bucket%40chrysan-1579284747809.iam.gserviceaccount.com"
+}

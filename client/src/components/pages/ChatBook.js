@@ -73,15 +73,15 @@ class Chatbook extends Component {
     });
   }
 
-  loadActiveUsers () {
-    get("/api/activeUsers").then((data) => {
-      console.log(data);
-    })
-  }
+  // loadActiveUsers () {
+  //   get("/api/activeUsers").then((data) => {
+  //     console.log(data);
+  //   })
+  // }
 
   componentDidMount() {
     this.loadMessageHistory();
-    this.loadActiveUsers();
+    //this.loadActiveUsers();
     console.log("before socket)");
     socket.on("message", (data) => {
       this.setState((prevstate) => ({
