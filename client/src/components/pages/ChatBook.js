@@ -58,7 +58,13 @@ class Chatbook extends Component {
   }
 
   setActiveUser = (user) => {
-    console.log(`setting the active user to: ${user.name}`);
+    this.loadMessageHistory(user);
+    this.setState({
+      activeChat: {
+        recipient: user,
+        messages: [],
+      },
+    });
   }
 
   loadMessageHistory () {
@@ -73,16 +79,15 @@ class Chatbook extends Component {
     });
   }
 
-  // loadActiveUsers () {
-  //   get("/api/activeUsers").then((data) => {
-  //     console.log(data);
-  //   })
-  // }
-
   componentDidMount() {
     this.loadMessageHistory();
-    //this.loadActiveUsers();
-    console.log("before socket)");
+
+    get("/api/activeUsers").then((data) => {
+      this.setState({
+        activeUsers: [ALL_CHAT].concat(data.activeUsers),
+      });
+    });
+
     socket.on("message", (data) => {
       this.setState((prevstate) => ({
         activeChat: {
@@ -90,6 +95,12 @@ class Chatbook extends Component {
           messages: prevstate.activeChat.messages.concat(data),
         },
       }));
+    });
+
+    socket.on("activeUsers", (data) => {
+      this.setState({
+        activeUsers: [ALL_CHAT].concat(data.activeUsers),
+      });
     });
   }
 

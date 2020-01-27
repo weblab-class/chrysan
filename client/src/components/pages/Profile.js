@@ -30,11 +30,6 @@ class Profile extends Component {
         })
       })
     }
-      addNewProduct = (productObj) => {
-        this.setState({
-          products: [productObj].concat(this.state.products),
-        });
-      };
 
     componentDidUpdate(oldProps) {
       // this is called whenever the props change (call API again if the userId changes)
@@ -54,6 +49,7 @@ class Profile extends Component {
           productId = {productObj._id}
           price= {productObj.price}
           seller_name= {productObj.seller.name}
+          fileName= {productObj.fileName}
         />
       </div>
     ))

@@ -30,17 +30,6 @@ const path = require("path"); // provide utilities for working with file and dir
 const api = require("./api");
 const auth = require("./auth");
 
-// Google Bucket stuff
-const {Storage} = require("@google-cloud/storage");
-const gc = new Storage( {
-  keyFilename: path.join(__dirname, "../Chrysan-76a4a9873c6b.json"),
-  projectId: "chrysan-1579284747809",
-});
-
-gc.getBuckets().then((x) => {console.log(x)});
-
-const chrysanBucket = gc.bucket('chrysan-bucket');
-
 // socket stuff
 const socket = require("./server-socket");
 

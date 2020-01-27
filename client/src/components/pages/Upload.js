@@ -30,11 +30,12 @@ class Upload extends Component {
         })
       })
     }
-      addNewProduct = (productObj) => {
-        this.setState({
-          products: [productObj].concat(this.state.products),
-        });
-      };
+
+    addNewProduct = (productObj) => {
+      this.setState({
+        products: [productObj].concat(this.state.products),
+      });
+    };
 
     componentDidUpdate(oldProps) {
       // this is called whenever the props change (call API again if the userId changes)
@@ -47,16 +48,6 @@ class Upload extends Component {
     if (!this.state.user) {
       return <div> You must make an account! </div>;
     }
-    let productsList = this.state.products.map((productObj) => (
-      <div className = "Profile-cardContainer">
-        <Card 
-          product_name= {productObj.product_name}
-          productId = {productObj._id}
-          price= {productObj.price}
-          seller_name= {productObj.seller.name}
-        />
-      </div>
-    ))
     return (
       <div className = "Upload-container">
         <div className = "Upload-titleContainer u-textCenter u-flex-align-center">

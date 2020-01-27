@@ -16,7 +16,8 @@ class NewPostInput extends Component {
 
     this.state = {
       product_name: '',
-      price: ''
+      price: '',
+      description: '',
     };
   }
 
@@ -42,7 +43,7 @@ class NewPostInput extends Component {
   // called when the user hits "Submit" for a new post
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.onSubmit && this.props.onSubmit(this.state.product_name, this.state.price, this.state.description);
+    this.props.onSubmit && this.props.onSubmit(this.state.product_name, this.state.price, this.state.description, this.state.fileName);
     this.setState({
       product_name: "",
       price: "",
@@ -77,6 +78,8 @@ class NewPostInput extends Component {
           onChange={this.handleDescriptionChange}
           className="NewPostInput-input"
         />
+        Image Upload:
+        <input type="file" id="userFileInput"/>
         <button
           type="submit"
           className="NewPostInput-button u-pointer"
@@ -102,7 +105,7 @@ class NewPostInput extends Component {
     super(props);
   }
 
-  addProduct = (product_name, price, description) => {
+  addProduct = (product_name, price, description, fileName) => {
     const body = { 
       seller: {
         _id: this.props.user._id,
@@ -112,6 +115,26 @@ class NewPostInput extends Component {
       price: price,
       description: description,
     };
+
+    // const body = {
+    //   file : document.getElementById("userFileInput").files[0].value,
+    //   test : "hello",
+    // };
+    // post("/api/upload", body).then((fileName) => console.log(fileName));
+
+    // var file = document.getElementById("userFileInput").files[0],
+    // read = new FileReader();
+
+    // read.readAsBinaryString(file);
+    // console.log(read.result);
+
+    // post("/api/upload", {file_content : `${read.result}`});
+
+    // const fileReader = new FileReader();
+    // var file = document.getElementById("userFileInput").files[0];
+    // console.log(file);
+    //post("/api/upload", {fileName: {fileName}});
+    
     post("/api/product", body).then((product) => {
       this.props.addNewProduct(product);
     });
