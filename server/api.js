@@ -69,7 +69,7 @@ router.get("/activeUsers", (req, res) => {
 router.get("/user", (req, res) => {
   User.findById(req.query.userId).then((user) => {
     res.send(user);
-  })
+  });
 });
 
 // get all products
@@ -118,13 +118,25 @@ router.post("/product", (req, res) => {
 })
 
 router.get("/chat", (req, res) => {
-  const query = {"recipient._id": "ALL_CHAT"};
+  let query;
+  if (req.query.recipient_id === "ALL_CHAT") {
+    // get any message sent by anybody to ALL_CHAT
+    query = { "recipient._id": "ALL_CHAT" };
+  } else {
+    // get messages that are from me->you OR you->me
+    query = {
+      $or: [
+        { "sender._id": req.user._id, "recipient._id": req.query.recipient_id },
+        { "sender._id": req.query.recipient_id, "recipient._id": req.user._id },
+      ],
+    };
+  }
+
   Message.find(query).then((messages) => res.send(messages));
 })
 
 router.post("/message", auth.ensureLoggedIn, (req, res) => {
   console.log(`Received a chat message from ${req.user.name}: ${req.body.content}`);
-  console.log("hit");
 
   // insert this message into the database
   const message = new Message({
@@ -136,6 +148,7 @@ router.post("/message", auth.ensureLoggedIn, (req, res) => {
     content: req.body.content,
   });
   message.save();
+
   if (req.body.recipient._id == "ALL_CHAT") {
     socket.getIo().emit("message", message);
   } else {
