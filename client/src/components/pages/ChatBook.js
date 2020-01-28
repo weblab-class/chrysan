@@ -11,24 +11,6 @@ const ALL_CHAT = {
   name: "ALL CHAT",
 };
 
-const TEST_MESSAGES = [
-  {
-    sender: {
-      _id: 0,
-      name: "grace",
-    },
-    content: "i am struggling",
-  },
-
-  {
-    sender: {
-      _id: 1,
-      name: "emily",
-    },
-    content: "css is confusing",
-  },
-]
-
 class Chatbook extends Component {
   /**
    * @typedef UserObject
@@ -52,46 +34,68 @@ class Chatbook extends Component {
       activeUsers : [],
       activeChat : {
         recipient : ALL_CHAT,
-        messages : TEST_MESSAGES,
+        messages : [],
       }
     };
   }
 
-  setActiveUser = (user) => {
-    console.log(`setting the active user to: ${user.name}`);
-  }
-
-  loadMessageHistory () {
-    get("/api/chat", { recipient_id: this.state.activeChat.recipient._id }).then((newMessages) => {
-      //console.log(newMessages);
+  loadMessageHistory(recipient) {
+    get("/api/chat", { recipient_id: recipient._id }).then((messages) => {
       this.setState({
-        activeChat : {
-          recipient: this.state.activeChat.recipient,
-          messages: newMessages,
+        activeChat: {
+          recipient: recipient,
+          messages: messages,
         },
-      })
+      });
     });
   }
-
-  // loadActiveUsers () {
-  //   get("/api/activeUsers").then((data) => {
-  //     console.log(data);
-  //   })
-  // }
 
   componentDidMount() {
-    this.loadMessageHistory();
-    //this.loadActiveUsers();
-    console.log("before socket)");
+    document.title = "Chrysan Chat";
+
+    this.loadMessageHistory(ALL_CHAT);
+
+    get("/api/activeUsers").then((data) => {
+      this.setState({
+        activeUsers: [ALL_CHAT].concat(data.activeUsers),
+      });
+    });
+
     socket.on("message", (data) => {
-      this.setState((prevstate) => ({
-        activeChat: {
-          recipient: prevstate.activeChat.recipient,
-          messages: prevstate.activeChat.messages.concat(data),
-        },
-      }));
+      console.log("Checking ", data);
+      console.log("State ", this.state);
+      console.log("Props", this.props);
+      if (
+        (data.recipient._id === this.state.activeChat.recipient._id &&
+          data.sender._id === this.props.userId) ||
+        (data.sender._id === this.state.activeChat.recipient._id &&
+          data.recipient._id === this.props.userId) ||
+        (data.recipient._id === "ALL_CHAT" && this.state.activeChat.recipient._id === "ALL_CHAT")
+      ) {
+        this.setState((prevstate) => ({
+          activeChat: {
+            recipient: prevstate.activeChat.recipient,
+            messages: prevstate.activeChat.messages.concat(data),
+          },
+        }));
+      }
+    });
+    socket.on("activeUsers", (data) => {
+      this.setState({
+        activeUsers: [ALL_CHAT].concat(data.activeUsers),
+      });
     });
   }
+
+  setActiveUser = (user) => {
+    this.loadMessageHistory(user);
+    this.setState({
+      activeChat: {
+        recipient: user,
+        messages: [],
+      },
+    });
+  };
 
   render() {
     return (
@@ -101,7 +105,9 @@ class Chatbook extends Component {
           setActiveUser={this.setActiveUser} 
           userId={this.props.userId} 
           active={this.state.activeChat.recipient}/>
-        <Chat data={this.state.activeChat}/>
+        <div className="Chatbook-chatContainer u-relative">
+            <Chat data={this.state.activeChat} />
+        </div>
       </ div>
     );
   }

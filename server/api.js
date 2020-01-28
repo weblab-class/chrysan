@@ -9,9 +9,15 @@
 
 const express = require("express");
 
+// file stream
+const fs = require('fs');
+
 // import models so we can interact with the database
 const User = require("./models/user");
 const Product = require("./models/product");
+
+// provide utilities for working with file and directory paths
+const path = require("path");
 
 // import authentication library
 const auth = require("./auth");
@@ -22,7 +28,16 @@ const router = express.Router();
 //initialize socket
 const socket = require("./server-socket");
 
+// Message schema for MongoDB
 const Message = require("./models/message");
+
+// Google Bucket initialization
+const {Storage} = require("@google-cloud/storage");
+const gc = new Storage( {
+  keyFilename: path.join(__dirname, "../Chrysan-76a4a9873c6b.json"),
+  projectId: "chrysan-1579284747809",
+});
+const chrysanBucket = gc.bucket('chrysan-bucket');
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
@@ -35,11 +50,6 @@ router.get("/whoami", (req, res) => {
   res.send(req.user);
 });
 
-// get active users to load onto chat window
-router.get("/activeUsers", (req, res) => {
-  res.send({ activeUsers: socket.getAllConnectedUsers() });
-});
-
 router.post("/initsocket", (req, res) => {
   // do nothing if user not logged in
   if (req.user) socket.addUser(req.user, socket.getSocketFromSocketID(req.body.socketid));
@@ -50,11 +60,16 @@ router.post("/initsocket", (req, res) => {
 // | write your API methods below!|
 // |------------------------------|
 
+// get active users to display in chatbook
+router.get("/activeUsers", (req, res) => {
+  res.send({ activeUsers: socket.getAllConnectedUsers() });
+});
+
 // get user name
 router.get("/user", (req, res) => {
   User.findById(req.query.userId).then((user) => {
     res.send(user);
-  })
+  });
 });
 
 // get all products
@@ -67,6 +82,25 @@ router.get("/singleproduct", (req, res) => {
   Product.findById(req.query.productId).then((product) => res.send(product))
 })
 
+// upload file to Google Bucket
+router.post("/upload", (req, res) => {
+  var fileContent = req.body.file_content;
+  console.log(fileContent);
+  //var writeStream = fs.createWriteStream('/Users/gracekim/Desktop/chrysan/images');
+  //var promise = req.body.file.stream().pipeTo(writeStream);
+  /*;
+  async function uploadFile() {
+    // uploads local file to Google Bucket
+    await chrysanBucket.upload(fileName, {
+      gzip: true,
+      metadata: {
+        cacheControl: "public, max-age=31536000",
+      },
+    });
+    console.log(`${fileName} uploaded to ${chrysanBucket}.`)
+  }
+  uploadFile();*/
+});
 
 // post product
 router.post("/product", (req, res) => {
@@ -78,18 +112,31 @@ router.post("/product", (req, res) => {
     product_name: req.body.product_name,
     price: req.body.price,
     description: req.body.description,
+    fileName: req.body.fileName,
   });
   newProduct.save().then((product) => res.send(product))
-
 })
+
 router.get("/chat", (req, res) => {
-  const query = {"recipient._id": "ALL_CHAT"};
+  let query;
+  if (req.query.recipient_id === "ALL_CHAT") {
+    // get any message sent by anybody to ALL_CHAT
+    query = { "recipient._id": "ALL_CHAT" };
+  } else {
+    // get messages that are from me->you OR you->me
+    query = {
+      $or: [
+        { "sender._id": req.user._id, "recipient._id": req.query.recipient_id },
+        { "sender._id": req.query.recipient_id, "recipient._id": req.user._id },
+      ],
+    };
+  }
+
   Message.find(query).then((messages) => res.send(messages));
 })
 
 router.post("/message", auth.ensureLoggedIn, (req, res) => {
   console.log(`Received a chat message from ${req.user.name}: ${req.body.content}`);
-  console.log("hit");
 
   // insert this message into the database
   const message = new Message({
@@ -101,7 +148,17 @@ router.post("/message", auth.ensureLoggedIn, (req, res) => {
     content: req.body.content,
   });
   message.save();
-  socket.getIo().emit("message", message);
+
+  if (req.body.recipient._id == "ALL_CHAT") {
+    socket.getIo().emit("message", message);
+  } else {
+    console.log("before socket emit");
+    socket.getSocketFromUserID(req.body.recipient._id).emit("message", message);
+    socket.getSocketFromUserID(req.user._id).emit("message", message);
+    console.log("after socket emit");
+  }
+
+  res.send({message: req.body.content});
 });
 
 // anything else falls to this "not found" case

@@ -29,6 +29,7 @@ class Feed extends Component {
           price= {productObj.price}
           seller_name = {productObj.seller.name}
           productId = {productObj._id}
+          fileName = {productObj.fileName}
         />
       </div>
       ))

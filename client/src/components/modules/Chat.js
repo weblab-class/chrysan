@@ -49,7 +49,7 @@ class Chat extends Component {
                     <NewMessage recipient={this.props.data.recipient} />
                 </div>
             </div>
-        )
+        );
     }
 }
 

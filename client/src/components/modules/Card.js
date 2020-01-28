@@ -13,6 +13,8 @@ import "./Card.css";
  * @param {string} product_name
  * @param {string} productId
  * @param {string} price
+ * @param {string} seller_name
+ * @param {string} fileName
  */
 
 class Card extends Component {
@@ -32,6 +34,13 @@ class Card extends Component {
   }
 
   componentDidMount() {
+    if (typeof this.props.fileName !== 'undefined') {
+      var newFileName = this.props.fileName.replace('fakepath','User/gracekim\\Desktop\\chrysan\\images')
+      this.setState({
+        image: newFileName,
+      })
+    }
+    console.log(newFileName);
   }
 
   render() {
@@ -49,6 +58,7 @@ class Card extends Component {
             price = {this.props.price}
             seller_name = {this.props.seller_name}
             productId = {this.props.productId}
+            fileName = {this.props.fileName}
             // rent_price = {this.state.rent_price}
             // sell = {this.state.sell}
             // rent = {this.state.rent}

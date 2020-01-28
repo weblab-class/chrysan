@@ -48,6 +48,7 @@ class Profile extends Component {
           productId = {productObj._id}
           price= {productObj.price}
           seller_name= {productObj.seller.name}
+          fileName= {productObj.fileName}
         />
       </div>
     ))

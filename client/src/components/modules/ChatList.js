@@ -17,6 +17,7 @@ class ChatList extends Component {
   }
 
   render() {
+    console.log(this.props.users);
     return (
       <>
         <h3>Open Chats</h3>
