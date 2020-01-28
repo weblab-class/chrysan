@@ -32,10 +32,19 @@ class NewMessage extends Component {
         document.getElementById("input-text").value=null;
         post("/api/message", body);
     }
+
+    enterPressed = (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            this.sendMessage();
+        }
+    }
      
     render() {
         return(<div>
-            <textarea rows="5" cols="60" id="input-text" onChange={this.textChange}/>
+            <textarea rows="5" cols="60" id="input-text" 
+                onChange={this.textChange}
+                onKeyPress={this.enterPressed}/>
             <button onClick={this.sendMessage}>Submit</button>
         </div>
         );
