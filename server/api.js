@@ -152,9 +152,13 @@ router.post("/message", auth.ensureLoggedIn, (req, res) => {
   if (req.body.recipient._id == "ALL_CHAT") {
     socket.getIo().emit("message", message);
   } else {
+    console.log("before socket emit");
     socket.getSocketFromUserID(req.body.recipient._id).emit("message", message);
     socket.getSocketFromUserID(req.user._id).emit("message", message);
+    console.log("after socket emit");
   }
+
+  res.send({message: req.body.content});
 });
 
 // anything else falls to this "not found" case

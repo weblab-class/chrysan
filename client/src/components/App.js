@@ -58,7 +58,7 @@ class App extends Component {
           <Feed path="/" />
           <Profile path="/profile/:userId"
             userId= {this.state.userId}/>
-          <Chatbook path="/chat" />
+          <Chatbook path="/chat" userId={this.state.userId} />
           <SinglePage path="/product/:productId" />
           <Upload path="/upload" 
             userId= {this.state.userId}/>

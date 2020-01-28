@@ -39,18 +39,6 @@ class Chatbook extends Component {
     };
   }
 
-  // loadMessageHistory () {
-  //   get("/api/chat", { recipient_id: this.state.activeChat.recipient._id }).then((newMessages) => {
-  //     //console.log(newMessages);
-  //     this.setState({
-  //       activeChat : {
-  //         recipient: this.state.activeChat.recipient,
-  //         messages: newMessages,
-  //       },
-  //     })
-  //   });
-  // }
-
   loadMessageHistory(recipient) {
     get("/api/chat", { recipient_id: recipient._id }).then((messages) => {
       this.setState({
@@ -63,30 +51,7 @@ class Chatbook extends Component {
   }
 
   componentDidMount() {
-    // this.loadMessageHistory();
-
-    // get("/api/activeUsers").then((data) => {
-    //   this.setState({
-    //     activeUsers: [ALL_CHAT].concat(data.activeUsers),
-    //   });
-    // });
-
-    // socket.on("message", (data) => {
-    //   this.setState((prevstate) => ({
-    //     activeChat: {
-    //       recipient: prevstate.activeChat.recipient,
-    //       messages: prevstate.activeChat.messages.concat(data),
-    //     },
-    //   }));
-    // });
-
-    // socket.on("activeUsers", (data) => {
-    //   this.setState({
-    //     activeUsers: [ALL_CHAT].concat(data.activeUsers),
-    //   });
-    // });
-
-    document.title = "Chatbook";
+    document.title = "Chrysan Chat";
 
     this.loadMessageHistory(ALL_CHAT);
 
@@ -97,6 +62,9 @@ class Chatbook extends Component {
     });
 
     socket.on("message", (data) => {
+      console.log("Checking ", data);
+      console.log("State ", this.state);
+      console.log("Props", this.props);
       if (
         (data.recipient._id === this.state.activeChat.recipient._id &&
           data.sender._id === this.props.userId) ||
