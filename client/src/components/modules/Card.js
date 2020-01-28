@@ -34,13 +34,13 @@ class Card extends Component {
   }
 
   componentDidMount() {
-    if (typeof this.props.fileName !== 'undefined') {
-      var newFileName = this.props.fileName.replace('fakepath','User/gracekim\\Desktop\\chrysan\\images')
-      this.setState({
-        image: newFileName,
-      })
-    }
-    console.log(newFileName);
+    // if (typeof this.props.fileName !== 'undefined') {
+    //   var newFileName = this.props.fileName.replace('fakepath','User/gracekim\\Desktop\\chrysan\\images')
+    //   this.setState({
+    //     image: newFileName,
+    //   })
+    // }
+    // console.log(newFileName);
   }
 
   render() {

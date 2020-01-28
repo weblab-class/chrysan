@@ -40,7 +40,6 @@ class Chat extends Component {
         if (this.props.data.recipient.name === "ALL CHAT") {
             return (
                 <div>
-                    <h3>No active users!</h3>
                 </div>
             )
         } else {
