@@ -53,11 +53,11 @@ class Chatbook extends Component {
   componentDidMount() {
     document.title = "Chrysan Chat";
 
-    this.loadMessageHistory(ALL_CHAT);
+    //this.loadMessageHistory(ALL_CHAT);
 
     get("/api/activeUsers").then((data) => {
       this.setState({
-        activeUsers: [ALL_CHAT].concat(data.activeUsers),
+        activeUsers: [].concat(data.activeUsers),
       });
     });
 

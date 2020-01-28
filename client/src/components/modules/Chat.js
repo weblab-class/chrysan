@@ -37,7 +37,14 @@ class Chat extends Component {
     }
 
     render() {
-        return (
+        if (this.props.data.recipient.name === "ALL CHAT") {
+            return (
+                <div>
+                    <h3>No active users!</h3>
+                </div>
+            )
+        } else {
+            return (
             <div className="u-flexColumn Chat-container">
                 <h3>Chatting with {this.props.data.recipient.name}</h3>
                 <div>
@@ -49,7 +56,8 @@ class Chat extends Component {
                     <NewMessage recipient={this.props.data.recipient} />
                 </div>
             </div>
-        );
+            );
+        }
     }
 }
 
