@@ -47,16 +47,7 @@ class Upload extends Component {
     if (!this.state.user) {
       return <div> You must make an account! </div>;
     }
-    let productsList = this.state.products.map((productObj) => (
-      <div className = "Profile-cardContainer">
-        <Card 
-          product_name= {productObj.product_name}
-          productId = {productObj._id}
-          price= {productObj.price}
-          seller_name= {productObj.seller.name}
-        />
-      </div>
-    ))
+    
     return (
       <div className = "Upload-container">
         <div className = "Upload-titleContainer u-textCenter u-flex-align-center">

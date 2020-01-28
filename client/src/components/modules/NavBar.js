@@ -1,31 +1,84 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
-
-const GOOGLE_CLIENT_ID = "510579889189-t2m19hbnj6ht508ith1u5bjgfnigsvfv.apps.googleusercontent.com";
+import Dropdown from "./Dropdown.js";
+import { get } from "../../utilities";
 
 import "./NavBar.css";
 
+// google login stuff lmao
+const GOOGLE_CLIENT_ID = "510579889189-t2m19hbnj6ht508ith1u5bjgfnigsvfv.apps.googleusercontent.com";
+
+// start
 class NavBar extends Component {
     constructor(props) {
-      super(props);
-      // Initialize Default State
-      this.state = {};
+      super(props)
+      this.state = {
+        user: undefined,
+        // for dropdown pages  
+        list: [
+            {
+                id: 0,
+                title: 'Edit My Profile',
+                selected: false,
+                key: 'page',
+                link: "/edit"
+            },
+            {
+                id: 1,
+                title: 'Upload New Items',
+                selected: false,
+                key: 'page',
+                link: "/upload"
+            },
+            {
+                id: 2,
+                title: 'My Saved Items',
+                selected: false,
+                key: 'page',
+                link: "/saved"
+            },
+          ]
+      };
     }
-  
+    // login stuff, just in case it messes up
+    setUser = () => {
+        get(`/api/user`, { userId: this.props.userId }).then((user) => this.setState({ user: user }));
+      }
+    
+    componentDidUpdate(oldProps) {
+        // this is called whenever the props change (call API again if the userId changes)
+        if (oldProps.userId !== this.props.userId) {
+          this.setUser();
+        }
+      }
+
+    // what happens when something is toggled on the dropdown
+    toggleSelected (id, key){
+            let temp = this.state[key]
+            temp[id].selected = !temp[id].selected
+            this.setState({
+              [key]: temp
+            })
+          }
+
+    // classic
     componentDidMount() {
-      // remember -- api calls go here!
+        console.log(this.state)
+        this.setUser();
+        console.log(this.state)
     }
 
     render() {
         return (
             <nav className = "NavBar-container">
+                {/* other links */}
                 <span className = "NavBar-title u-inlineBlock">
                     chrysan
                 </span>
                 <span className = "NavBar-linkContainer u-inlineBlock">
                     <Link to='/' className = "NavBar-link">
-                        Feed
+                        Home
                     </Link>
                     <Link to={`/profile/${this.props.userId}`} className = "NavBar-link">
                         Profile
@@ -33,10 +86,19 @@ class NavBar extends Component {
                     <Link to='/chat' className = "NavBar-link">
                         Chatbook
                     </Link>
-                    <Link to='/upload' className = "NavBar-link">
-                        Upload
-                    </Link>
                 </span>
+
+                {/* dropdown */}
+                <div>
+                    <Dropdown
+                        title= "My Account"
+                        list={this.state.list}
+                        toggleItem={this.toggleSelected}
+                        userId= {this.props.userId}
+                    />
+                </div>
+                
+                {/* login stuffs */}
                 {this.props.userId ? (
                     <GoogleLogout
                         clientId={GOOGLE_CLIENT_ID}

@@ -20,7 +20,6 @@ class Profile extends Component {
     }
   
     componentDidMount() {
-      console.log(this.state.user)
       this.setUser();
       document.title = "My Profile";
       get("/api/products").then((productObjs) => {
@@ -30,11 +29,6 @@ class Profile extends Component {
         })
       })
     }
-      addNewProduct = (productObj) => {
-        this.setState({
-          products: [productObj].concat(this.state.products),
-        });
-      };
 
     componentDidUpdate(oldProps) {
       // this is called whenever the props change (call API again if the userId changes)
@@ -63,7 +57,7 @@ class Profile extends Component {
           <div className = "Profile-title" > {this.state.user.name} </div>
           <div className = "Profile-aboutContainer" >
             <div>About Me</div>
-            <div>i have too much clothes but not enough</div>
+            <div>i have too many clothes but also not enough</div>
           </div>
         </div>
         <div> my items: </div>

@@ -5,6 +5,8 @@ import Upload from "./pages/Upload.js";
 import NavBar from "./modules/NavBar.js";
 import Chatbook from "./pages/ChatBook.js";
 import Feed from "./pages/Feed.js";
+import Saved from "./pages/Saved.js";
+import Edit from "./pages/Edit.js";
 import SinglePage from "./modules/SinglePage.js";
 import { socket } from "../client-socket.js";
 import { get, post } from "../utilities";
@@ -61,6 +63,10 @@ class App extends Component {
           <Chatbook path="/chat" />
           <SinglePage path="/product/:productId" />
           <Upload path="/upload" 
+            userId= {this.state.userId}/>
+          <Saved path="/saved" 
+            userId= {this.state.userId}/>
+          <Edit path="/edit" 
             userId= {this.state.userId}/>
         </Router>
       </div>

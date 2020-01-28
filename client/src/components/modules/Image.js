@@ -19,7 +19,6 @@ class Image extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.productId)
   }
 
   render() {
