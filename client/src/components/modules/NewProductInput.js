@@ -64,43 +64,52 @@ class NewPostInput extends Component {
   render() {
     return (
       <div className= "u-flex">
-        <div>
+        <div id="imageUpload">
           Image Upload:
           <input type="file" id="userFileInput" onChange={this.handleFileUpload}/>
           <img id="previewFileSpace" src="" height="200"></img>
         </div>
-        Product Name:
-        <input
-          type="text"
-          placeholder={this.props.defaultText}
-          value={this.state.product_name}
-          onChange={this.handleNameChange}
-          className="NewPostInput-input"
-        />
-        Price:
-        <input
-          type="text"
-          placeholder={this.props.defaultText}
-          value={this.state.price}
-          onChange={this.handlePriceChange}
-          className="NewPostInput-input"
-        />
-        Description:
-        <input
-          type="text"
-          placeholder={this.props.defaultText}
-          value={this.state.description}
-          onChange={this.handleDescriptionChange}
-          className="NewPostInput-input"
-        />
-        <button
-          type="submit"
-          className="NewPostInput-button u-pointer"
-          value="Submit"
-          onClick={this.handleSubmit}
-        >
-          Submit
-        </button>
+        <div id="descriptionInput">
+          <label>
+            Product Name:
+            <input
+              type="text"
+              placeholder={this.props.defaultText}
+              value={this.state.product_name}
+              onChange={this.handleNameChange}
+              className="NewPostInput-input"
+            />
+          </label>
+          <label>
+          Price: 
+            <input
+              type="text"
+              placeholder={this.props.defaultText}
+              value={this.state.price}
+              onChange={this.handlePriceChange}
+              className="NewPostInput-input"
+            />
+          </label>
+          <lable>
+          Description:
+            <input
+              type="text"
+              placeholder={this.props.defaultText}
+              value={this.state.description}
+              onChange={this.handleDescriptionChange}
+              className="NewPostInput-input"
+            />
+          </lable>
+          <br/>
+            <button
+              type="submit"
+              className="NewPostInput-button u-pointer"
+              value="Submit"
+              onClick={this.handleSubmit}
+            >
+              Submit
+            </button>
+        </div>
       </div>
     );
   }
