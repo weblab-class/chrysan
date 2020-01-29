@@ -30,6 +30,8 @@ class SinglePage extends Component {
     }
 
     componentDidMount() {
+      console.log(this.props.productId);
+      var query = {_id: this.props.productId};
       get("/api/products").then((productObjs) => {
         productObjs.filter(productObj => productObj._id === this.props.productId)
         .map((productObj) => {
@@ -39,40 +41,24 @@ class SinglePage extends Component {
           })
         });
       });
+      // get("/api/singleproduct", query).then((productObj) => {
+      //   this.setState({
+      //     product: productObj,
+      //   })
+      // });
     }
   
     render() {
-      return (
-        <div>{this.props.productId}</div>
-      );
-      // console.log(this.state.product);
-      // if (this.state.product !== undefined) {
-      //   console.log("product description hit");
-      //   return (
-      //     <div className = "SinglePage-container">
-      //       <img src = {this.state.product.imageURL}/>
-      //       <div>
-      //         {this.state.products.map((p, i) => (
-      //           <SingleDescription product={p} key={i}/>
-      //         ))}
-      //       </div>
-      //       <div>
-      //         {(this.props.sell) && 
-      //         <ButtonBuy 
-      //             buy_price = {this.props.buy_price}/> }
-      //         {(this.props.rent) && 
-      //         <ButtonRent
-      //             rent_price = {this.props.rent_price} /> }
-      //       </div>
-            
-      //     </div>
-      //   );
-      // } else {
-      //   console.log("initial render hit");
-      //   return (
-      //     <div>You have uploaded no products.</div>
-      //   )
-      // }
+      if (this.state.product === undefined) {
+        return(<div></div>);
+      } else {
+        return(
+          <div className = "SinglePage-container">
+            <img src={this.state.product.imageURL}/>
+            <SingleDescription product={this.state.product}/>
+          </div>
+        );
+      }
     }}
 
     export default SinglePage;

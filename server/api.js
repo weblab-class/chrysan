@@ -80,7 +80,11 @@ router.get("/products", (req, res) => {
 
 // get single product
 router.get("/singleproduct", (req, res) => {
-  Product.findById(req.query.productId).then((product) => res.send(product))
+  Product.findOne(req.query).then((product) => {
+    product = product._id.toString();
+    res.send(product);
+  });
+  //Product.findById(req.query.productId).then((product) => res.send(product))
 })
 
 // post product

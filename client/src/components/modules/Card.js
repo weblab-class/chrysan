@@ -22,25 +22,11 @@ class Card extends Component {
     super(props);
     this.state = {
       products: [],
-      // seller_name: "emily",
-      // seller_id: "456",
-      // buy_price: "10",
-      // rent_price: "5",
-      // sell: true,
-      // rent: true,
-      // haggle: true,
       image: Sample,
     };
   }
 
   componentDidMount() {
-    // if (typeof this.props.fileName !== 'undefined') {
-    //   var newFileName = this.props.fileName.replace('fakepath','User/gracekim\\Desktop\\chrysan\\images')
-    //   this.setState({
-    //     image: newFileName,
-    //   })
-    // }
-    // console.log(newFileName);
   }
 
   render() {
@@ -58,14 +44,7 @@ class Card extends Component {
             price = {this.props.price}
             seller_name = {this.props.seller_name}
             productId = {this.props.productId}
-            // rent_price = {this.state.rent_price}
-            // sell = {this.state.sell}
-            // rent = {this.state.rent}
-            // haggle = {this.state.haggle}
             />
-          <div>
-            {/* {this.state.seller_name}  */}
-          </div>
       </div>
     );
   }

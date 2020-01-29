@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Router } from "@reach/router";
 import Card from "../modules/Card.js";
 import { get } from "../../utilities";
 
@@ -28,8 +29,9 @@ class Feed extends Component {
           product_name= {productObj.product_name}
           price= {productObj.price}
           seller_name = {productObj.seller.name}
+          seller_id = {productObj.seller._id}
           productId = {productObj._id}
-          fileName = {productObj.fileName}
+          imageURL= {productObj.imageURL}
           key = {i}
         />
       </div>

@@ -8,7 +8,8 @@ import "../../utilities.css";
 
 
 /**
- * Story is a component that renders creator and content of a story
+ * SingleDescription is a component that renders the description of a product
+ * in the SinglePage for that specific product
  *
  * Proptypes
  * @param {ProductObject} product
@@ -21,7 +22,6 @@ class SingleDescription extends Component {
   }
 
   render() {
-    alert("single description");
     return (
         <div>
           <ButtonBuy
