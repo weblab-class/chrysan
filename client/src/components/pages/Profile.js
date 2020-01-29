@@ -45,7 +45,7 @@ class Profile extends Component {
       <div className = "Profile-cardContainer">
         <Card 
           product_name= {productObj.product_name}
-          productId = {productObj.seller._id}
+          productId = {productObj._id}
           price= {productObj.price}
           seller_name= {productObj.seller.name}
           fileName= {productObj.fileName}
