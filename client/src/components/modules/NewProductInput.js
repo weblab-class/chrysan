@@ -40,6 +40,16 @@ class NewPostInput extends Component {
     });
   };
 
+  // file preview for uploading files
+  handleFileUpload = (event) => {
+    var fileReader = new FileReader();
+    var fileToPreview = document.getElementById("userFileInput").files[0];
+    fileReader.onload = function() {
+      document.getElementById("previewFileSpace").src = fileReader.result;
+    }
+    fileReader.readAsDataURL(fileToPreview);
+  }
+
   // called when the user hits "Submit" for a new post
   handleSubmit = (event) => {
     event.preventDefault();
@@ -54,6 +64,11 @@ class NewPostInput extends Component {
   render() {
     return (
       <div className= "u-flex">
+        <div>
+          Image Upload:
+          <input type="file" id="userFileInput" onChange={this.handleFileUpload}/>
+          <img id="previewFileSpace" src="" height="200"></img>
+        </div>
         Product Name:
         <input
           type="text"
@@ -78,9 +93,6 @@ class NewPostInput extends Component {
           onChange={this.handleDescriptionChange}
           className="NewPostInput-input"
         />
-        Image Upload:
-        <input type="file" id="userFileInput"/>
-        <img id="previewFileSpace" src="" height="200"></img>
         <button
           type="submit"
           className="NewPostInput-button u-pointer"

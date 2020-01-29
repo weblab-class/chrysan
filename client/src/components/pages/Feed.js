@@ -38,19 +38,6 @@ class Feed extends Component {
       ))
     return (
       <div>
-        <div className = "Feed-searchContainer">
-          {/* search bar that is currently not functional */}
-          <input
-            type = "text"
-            // value = {this.state.inputText}
-            // onChange = {this.handleInputChange}
-          />
-          <span>
-            <button>
-              search
-            </button>
-          </span>
-        </div>
         <div className = "u-textCenter">
           <div className = "Feed-title">CHRYSAN</div>
           <div>browse all items here!</div>

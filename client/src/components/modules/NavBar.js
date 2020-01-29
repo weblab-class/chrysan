@@ -15,30 +15,6 @@ class NavBar extends Component {
       super(props)
       this.state = {
         user: undefined,
-        // for dropdown pages  
-        list: [
-            {
-                id: 0,
-                title: 'Edit My Profile',
-                selected: false,
-                key: 'page',
-                link: "/edit"
-            },
-            {
-                id: 1,
-                title: 'Upload New Items',
-                selected: false,
-                key: 'page',
-                link: "/upload"
-            },
-            {
-                id: 2,
-                title: 'My Saved Items',
-                selected: false,
-                key: 'page',
-                link: "/saved"
-            },
-          ]
       };
     }
     // login stuff, just in case it messes up
@@ -52,15 +28,6 @@ class NavBar extends Component {
           this.setUser();
         }
       }
-
-    // what happens when something is toggled on the dropdown
-    toggleSelected (id, key){
-            let temp = this.state[key]
-            temp[id].selected = !temp[id].selected
-            this.setState({
-              [key]: temp
-            })
-          }
 
     // classic
     componentDidMount() {
@@ -84,19 +51,12 @@ class NavBar extends Component {
                         Profile
                     </Link>
                     <Link to='/chat' className = "NavBar-link">
-                        Chatbook
+                        Messages
+                    </Link>
+                    <Link to='/upload' className="NavBar-link">
+                        Upload
                     </Link>
                 </span>
-
-                {/* dropdown */}
-                <div>
-                    <Dropdown
-                        title= "My Account"
-                        list={this.state.list}
-                        toggleItem={this.toggleSelected}
-                        userId= {this.props.userId}
-                    />
-                </div>
                 
                 {/* login stuffs */}
                 {this.props.userId ? (
