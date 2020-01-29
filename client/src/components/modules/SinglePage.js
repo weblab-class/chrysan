@@ -54,7 +54,7 @@ class SinglePage extends Component {
       } else {
         return(
           <div className = "SinglePage-container">
-            <img src={this.state.product.imageURL}/>
+            <img size="600px" src={this.state.product.imageURL}/>
             <SingleDescription product={this.state.product}/>
           </div>
         );

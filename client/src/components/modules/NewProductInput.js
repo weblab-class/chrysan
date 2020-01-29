@@ -67,7 +67,8 @@ class NewPostInput extends Component {
         <div id="imageUpload">
           Image Upload:
           <input type="file" id="userFileInput" onChange={this.handleFileUpload}/>
-          <img id="previewFileSpace" src="" height="200"></img>
+          <br></br>
+          <img id="previewFileSpace" src="" height="400"></img>
         </div>
         <div id="descriptionInput">
           <label>
