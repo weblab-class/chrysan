@@ -22,7 +22,7 @@ class Feed extends Component {
 }
 
   render() {
-      let productsList = this.state.products.map((productObj) => (
+      let productsList = this.state.products.map((productObj, i) => (
         <div className = "Profile-cardContainer">
         <Card
           product_name= {productObj.product_name}
@@ -30,6 +30,7 @@ class Feed extends Component {
           seller_name = {productObj.seller.name}
           productId = {productObj._id}
           fileName = {productObj.fileName}
+          key = {i}
         />
       </div>
       ))

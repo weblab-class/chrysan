@@ -48,12 +48,13 @@ class Dropdown extends Component {
                 </div>
             </div>
         {listOpen && <ul className="Dropdown-list">
-            {list.map((item) => (
+            {list.map((item, i) => (
                 <li>
                 <Link
                 className= "Dropdown-listItem"
                 key={item.id}
                 to= {item.link}
+                key={i}
                 >
                     {item.title}</Link></li>
             ))}

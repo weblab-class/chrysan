@@ -41,7 +41,7 @@ class Profile extends Component {
     if (!this.state.user) {
       return <div> You must make an account! </div>;
     }
-    let productsList = this.state.products.map((productObj) => (
+    let productsList = this.state.products.map((productObj, i) => (
       <div className = "Profile-cardContainer">
         <Card 
           product_name= {productObj.product_name}
@@ -50,6 +50,7 @@ class Profile extends Component {
           seller_name= {productObj.seller.name}
           fileName= {productObj.fileName}
           imageURL= {productObj.imageURL}
+          key= {i}
         />
       </div>
     ))
@@ -57,12 +58,7 @@ class Profile extends Component {
       <div className = "Profile-container">
         <div className = "Profile-titleContainer u-textCenter">
           <div className = "Profile-title" > {this.state.user.name} </div>
-          <div className = "Profile-aboutContainer" >
-            <div>About Me</div>
-            <div>i have too many clothes but also not enough</div>
-          </div>
         </div>
-        <div> my items: </div>
         <div className = "Profile-cardContainer u-flex-align-center">
           {productsList}
         </div>

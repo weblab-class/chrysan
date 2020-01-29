@@ -21,6 +21,7 @@ class SingleDescription extends Component {
   }
 
   render() {
+    alert("single description");
     return (
         <div>
           <ButtonBuy
