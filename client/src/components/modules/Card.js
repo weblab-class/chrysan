@@ -50,7 +50,7 @@ class Card extends Component {
             className = "Card-image u-flex-alignCenter"
             product_name = {this.props.product_name}
             productId = {this.props.productId}
-            image = {this.state.image}
+            imageURL = {this.props.imageURL}
             />
           <CardInfo 
             className = "Card-info"
@@ -58,7 +58,6 @@ class Card extends Component {
             price = {this.props.price}
             seller_name = {this.props.seller_name}
             productId = {this.props.productId}
-            fileName = {this.props.fileName}
             // rent_price = {this.state.rent_price}
             // sell = {this.state.sell}
             // rent = {this.state.rent}

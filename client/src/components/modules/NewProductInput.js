@@ -43,7 +43,7 @@ class NewPostInput extends Component {
   // called when the user hits "Submit" for a new post
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.onSubmit && this.props.onSubmit(this.state.product_name, this.state.price, this.state.description, this.state.fileName);
+    this.props.onSubmit && this.props.onSubmit(this.state.product_name, this.state.price, this.state.description);
     this.setState({
       product_name: "",
       price: "",
@@ -80,6 +80,7 @@ class NewPostInput extends Component {
         />
         Image Upload:
         <input type="file" id="userFileInput"/>
+        <img id="previewFileSpace" src="" height="200"></img>
         <button
           type="submit"
           className="NewPostInput-button u-pointer"
@@ -106,38 +107,27 @@ class NewPostInput extends Component {
   }
 
   addProduct = (product_name, price, description, fileName) => {
-    const body = { 
-      seller: {
-        _id: this.props.user._id,
-        name: this.props.user.name,
-      },
-      product_name: product_name,
-      price: price,
-      description: description,
-    };
-
-    // const body = {
-    //   file : document.getElementById("userFileInput").files[0].value,
-    //   test : "hello",
-    // };
-    // post("/api/upload", body).then((fileName) => console.log(fileName));
-
-    // var file = document.getElementById("userFileInput").files[0],
-    // read = new FileReader();
-
-    // read.readAsBinaryString(file);
-    // console.log(read.result);
-
-    // post("/api/upload", {file_content : `${read.result}`});
-
-    // const fileReader = new FileReader();
-    // var file = document.getElementById("userFileInput").files[0];
-    // console.log(file);
-    //post("/api/upload", {fileName: {fileName}});
-    
-    post("/api/product", body).then((product) => {
-      this.props.addNewProduct(product);
-    });
+    var file = document.getElementById("userFileInput").files[0];
+    var reader = new FileReader();
+    var imageURLPost ="";
+    var userID = this.props.user._id;
+    var userName = this.props.user.name;
+    reader.onload = function() {
+      imageURLPost = reader.result;
+      document.getElementById("previewFileSpace").src = imageURLPost;
+      const body = { 
+        seller: {
+          _id: userID,
+          name: userName,
+        },
+        product_name: product_name,
+        price: price,
+        description: description,
+        imageURL: imageURLPost,
+      };
+      post("/api/product", body);
+    }
+    reader.readAsDataURL(file);
   };
 
   render() {

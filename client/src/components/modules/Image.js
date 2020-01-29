@@ -9,12 +9,13 @@ import "./Image.css";
  * Proptypes
  * @param {string} product_name
  * @param {string} _id
- * @param {image} image
+ * @param {image} imageURL
  */
 class Image extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      base64string : this.props.imageURL,
     };
   }
 
@@ -22,6 +23,7 @@ class Image extends Component {
   }
 
   render() {
+    console.log("image rendered");
     return (
       <div>
         <Link 
@@ -34,7 +36,7 @@ class Image extends Component {
             // rent = {this.props.rent}
             // haggle = {this.state.haggle}
             >
-          <img src = {this.props.image} />
+          <img height="400" src = {this.props.imageURL} />
         </Link>
       </div>
     );

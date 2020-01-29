@@ -8,6 +8,7 @@
 */
 
 const express = require("express");
+const bodyParser = require('body-parser');
 
 // file stream
 const fs = require('fs');
@@ -82,26 +83,6 @@ router.get("/singleproduct", (req, res) => {
   Product.findById(req.query.productId).then((product) => res.send(product))
 })
 
-// upload file to Google Bucket
-router.post("/upload", (req, res) => {
-  var fileContent = req.body.file_content;
-  console.log(fileContent);
-  //var writeStream = fs.createWriteStream('/Users/gracekim/Desktop/chrysan/images');
-  //var promise = req.body.file.stream().pipeTo(writeStream);
-  /*;
-  async function uploadFile() {
-    // uploads local file to Google Bucket
-    await chrysanBucket.upload(fileName, {
-      gzip: true,
-      metadata: {
-        cacheControl: "public, max-age=31536000",
-      },
-    });
-    console.log(`${fileName} uploaded to ${chrysanBucket}.`)
-  }
-  uploadFile();*/
-});
-
 // post product
 router.post("/product", (req, res) => {
   const newProduct = new Product({
@@ -112,9 +93,9 @@ router.post("/product", (req, res) => {
     product_name: req.body.product_name,
     price: req.body.price,
     description: req.body.description,
-    fileName: req.body.fileName,
+    imageURL: req.body.imageURL,
   });
-  newProduct.save().then((product) => res.send(product))
+  newProduct.save().then((product) => res.send(product));
 })
 
 router.get("/chat", (req, res) => {

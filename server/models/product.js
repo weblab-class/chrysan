@@ -8,7 +8,7 @@ const ProductSchema = new mongoose.Schema({
   product_name: String,
   price: String,
   description: String,
-  fileName: String,
+  imageURL: String,
 });
 
 // compile model from schema

@@ -45,10 +45,11 @@ class Profile extends Component {
       <div className = "Profile-cardContainer">
         <Card 
           product_name= {productObj.product_name}
-          productId = {productObj._id}
+          productId = {productObj.seller._id}
           price= {productObj.price}
           seller_name= {productObj.seller.name}
           fileName= {productObj.fileName}
+          imageURL= {productObj.imageURL}
         />
       </div>
     ))

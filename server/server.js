@@ -51,7 +51,16 @@ mongoose
 
 // create a new express server
 const app = express();
+const bodyParser = require('body-parser');
 app.use(validator.checkRoutes);
+
+// Increasing size of limit for file uploads in API requests!!
+// Express 4.0
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+// Express 3.0
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb' }));
 
 // allow us to process POST requests
 app.use(express.json());
